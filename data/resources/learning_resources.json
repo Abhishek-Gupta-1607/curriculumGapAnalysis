@@ -1,0 +1,365 @@
+{
+  "description": "Curated catalog of verified open learning resources for industry skill gap remediation.",
+  "resources": {
+    "DS-011": {
+      "topic": "MLOps and Model Deployment Pipelines",
+      "recommended_weight": 10.0,
+      "level": "Intermediate",
+      "reason": "Crucial for deploying machine learning models into reliable, monitored production environments with automated CI/CD pipelines.",
+      "items": [
+        {
+          "name": "MLOps Zoomcamp",
+          "url": "https://github.com/DataTalksClub/mlops-zoomcamp",
+          "provider": "DataTalksClub",
+          "type": "Course",
+          "cost": "Free",
+          "description": "Free practical course on MLOps covering experiment tracking, model registry, deployment, and monitoring."
+        },
+        {
+          "name": "Continuous Delivery for Machine Learning (CD4ML)",
+          "url": "https://martinfowler.com/articles/cd4ml.html",
+          "provider": "Martin Fowler / ThoughtWorks",
+          "type": "Guide / Architecture",
+          "cost": "Free",
+          "description": "Foundational architectural pattern for continuous delivery in machine learning applications."
+        }
+      ]
+    },
+    "DS-012": {
+      "topic": "Big Data Technologies and Distributed Computing",
+      "recommended_weight": 10.0,
+      "level": "Advanced",
+      "reason": "Essential for processing large-scale distributed datasets that exceed single-machine memory capacities.",
+      "items": [
+        {
+          "name": "Apache Spark Official Documentation and Programming Guide",
+          "url": "https://spark.apache.org/docs/latest/rdd-programming-guide.html",
+          "provider": "Apache Software Foundation",
+          "type": "Documentation",
+          "cost": "Free",
+          "description": "Comprehensive reference and tutorials on Apache Spark, RDDs, DataFrames, and distributed transformations."
+        },
+        {
+          "name": "Data Engineering Zoomcamp",
+          "url": "https://github.com/DataTalksClub/data-engineering-zoomcamp",
+          "provider": "DataTalksClub",
+          "type": "Course",
+          "cost": "Free",
+          "description": "Free course covering data pipelines, Apache Spark, Kafka, data lakes, and modern data warehouses."
+        }
+      ]
+    },
+    "DS-013": {
+      "topic": "Deep Learning and Neural Network Architectures",
+      "recommended_weight": 12.0,
+      "level": "Advanced",
+      "reason": "Foundational for modern computer vision, sequence modelling, and generative artificial intelligence.",
+      "items": [
+        {
+          "name": "Deep Learning Specialization",
+          "url": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+          "provider": "DeepLearning.AI / Coursera (Free Audit)",
+          "type": "Course",
+          "cost": "Free Audit",
+          "description": "Rigorous five-course sequence on neural networks, convolutional networks, and sequence models by Andrew Ng."
+        },
+        {
+          "name": "PyTorch Official Tutorials: Deep Learning with PyTorch",
+          "url": "https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html",
+          "provider": "PyTorch / Linux Foundation",
+          "type": "Tutorial",
+          "cost": "Free",
+          "description": "Hands-on PyTorch 60-minute blitz covering tensors, autograd, and neural network construction."
+        }
+      ]
+    },
+    "DS-014": {
+      "topic": "Natural Language Processing and Text Analytics",
+      "recommended_weight": 10.0,
+      "level": "Intermediate",
+      "reason": "Key discipline for analyzing unstructured text, tokenization, embeddings, and transformer architectures.",
+      "items": [
+        {
+          "name": "Hugging Face NLP Course",
+          "url": "https://huggingface.co/learn/nlp-course",
+          "provider": "Hugging Face",
+          "type": "Course",
+          "cost": "Free",
+          "description": "Comprehensive open curriculum on Transformers, tokenizers, fine-tuning, and NLP pipelines."
+        },
+        {
+          "name": "Stanford CS224N: Natural Language Processing with Deep Learning",
+          "url": "https://web.stanford.edu/class/cs224n/",
+          "provider": "Stanford University",
+          "type": "University Lectures & Notes",
+          "cost": "Free",
+          "description": "World-class university syllabus, lecture videos, and assignments covering cutting-edge NLP."
+        }
+      ]
+    },
+    "DS-015": {
+      "topic": "Data Ethics, Algorithmic Bias and Responsible AI",
+      "recommended_weight": 8.0,
+      "level": "Intermediate",
+      "reason": "Vital requirement for identifying algorithmic bias, ensuring privacy compliance (GDPR), and responsible AI governance.",
+      "items": [
+        {
+          "name": "Ethics and Governance of Artificial Intelligence for Health",
+          "url": "https://www.who.int/publications/i/item/9789240029200",
+          "provider": "World Health Organization",
+          "type": "Framework / Guidance",
+          "cost": "Free",
+          "description": "Global guidance on governance, privacy protection, and ethical evaluation of autonomous algorithms."
+        },
+        {
+          "name": "NIST Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+          "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+          "provider": "NIST",
+          "type": "Standard / Framework",
+          "cost": "Free",
+          "description": "Voluntary guidance to improve the ability to incorporate trustworthiness considerations into AI products."
+        }
+      ]
+    },
+    "WD-011": {
+      "topic": "Web Accessibility (WCAG 2.1 / 2.2 Standards)",
+      "recommended_weight": 8.0,
+      "level": "Intermediate",
+      "reason": "Legal and ethical standard ensuring web interfaces are operable and understandable by users with disabilities.",
+      "items": [
+        {
+          "name": "W3C Web Accessibility Initiative (WAI) - Introduction to Web Accessibility",
+          "url": "https://www.w3.org/WAI/fundamentals/accessibility-intro/",
+          "provider": "World Wide Web Consortium (W3C)",
+          "type": "Standards / Guidelines",
+          "cost": "Free",
+          "description": "Official accessibility principles, WCAG guidelines, and accessibility testing techniques."
+        },
+        {
+          "name": "web.dev Learn Accessibility",
+          "url": "https://web.dev/learn/accessibility/",
+          "provider": "Google Chrome Team",
+          "type": "Course",
+          "cost": "Free",
+          "description": "Modern course covering ARIA landmarks, semantic HTML, keyboard navigation, and contrast requirements."
+        }
+      ]
+    },
+    "WD-012": {
+      "topic": "Progressive Web Applications (PWA) and Service Workers",
+      "recommended_weight": 8.0,
+      "level": "Intermediate",
+      "reason": "Enables web applications to function offline, support push notifications, and provide native-like mobile experiences.",
+      "items": [
+        {
+          "name": "MDN Web Docs: Progressive Web Apps",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps",
+          "provider": "Mozilla Developer Network (MDN)",
+          "type": "Documentation",
+          "cost": "Free",
+          "description": "Complete guide to service workers, web app manifests, offline caching, and PWA installation."
+        },
+        {
+          "name": "web.dev Learn PWA",
+          "url": "https://web.dev/learn/pwa/",
+          "provider": "Google web.dev",
+          "type": "Course",
+          "cost": "Free",
+          "description": "Practical guide to caching strategies, IndexedDB, background sync, and app store distribution."
+        }
+      ]
+    },
+    "WD-013": {
+      "topic": "GraphQL API Architecture and Implementation",
+      "recommended_weight": 10.0,
+      "level": "Intermediate",
+      "reason": "Alternative to REST that eliminates over-fetching and allows clients to request exact data structures.",
+      "items": [
+        {
+          "name": "Official GraphQL Documentation and Tutorials",
+          "url": "https://graphql.org/learn/",
+          "provider": "GraphQL Foundation",
+          "type": "Documentation / Tutorial",
+          "cost": "Free",
+          "description": "Fundamental concepts including schema definition language (SDL), queries, mutations, and resolvers."
+        },
+        {
+          "name": "Apollo GraphQL Odyssey Tutorials",
+          "url": "https://www.apollographql.com/tutorials/",
+          "provider": "Apollo GraphQL",
+          "type": "Interactive Course",
+          "cost": "Free",
+          "description": "Hands-on tutorials building client and server GraphQL applications with Node.js and React."
+        }
+      ]
+    },
+    "WD-014": {
+      "topic": "Containerization and Docker for Web Applications",
+      "recommended_weight": 8.0,
+      "level": "Intermediate",
+      "reason": "Standardizes development and production environments, eliminating 'works on my machine' inconsistencies.",
+      "items": [
+        {
+          "name": "Docker Official Getting Started Guide",
+          "url": "https://docs.docker.com/get-started/",
+          "provider": "Docker Inc.",
+          "type": "Documentation / Hands-on Lab",
+          "cost": "Free",
+          "description": "Step-by-step introduction to Dockerfiles, multi-stage builds, containers, and Docker Compose."
+        },
+        {
+          "name": "Docker for Node.js Web Applications",
+          "url": "https://nodejs.org/en/docs/guides/nodejs-docker-webapp/",
+          "provider": "Node.js Foundation",
+          "type": "Guide",
+          "cost": "Free",
+          "description": "Best practices for containerizing Node.js applications with proper security and caching."
+        }
+      ]
+    },
+    "WD-015": {
+      "topic": "Web Performance Optimization and Core Web Vitals",
+      "recommended_weight": 8.0,
+      "level": "Intermediate",
+      "reason": "Directly impacts user retention and search rankings through LCP, FID/INP, and CLS metric optimization.",
+      "items": [
+        {
+          "name": "web.dev Core Web Vitals Guide",
+          "url": "https://web.dev/explore/vitals",
+          "provider": "Google Chrome Team",
+          "type": "Guide / Tools",
+          "cost": "Free",
+          "description": "Comprehensive strategies for measuring and optimizing Largest Contentful Paint and Cumulative Layout Shift."
+        },
+        {
+          "name": "MDN Web Performance Learning Module",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/Performance",
+          "provider": "Mozilla Developer Network (MDN)",
+          "type": "Course",
+          "cost": "Free",
+          "description": "Foundational concepts covering critical rendering path, asset bundling, lazy loading, and HTTP caching."
+        }
+      ]
+    },
+    "CD-011": {
+      "topic": "Kubernetes and Container Orchestration",
+      "recommended_weight": 12.0,
+      "level": "Advanced",
+      "reason": "Industry standard for automated scaling, self-healing, and declarative management of containerized workloads.",
+      "items": [
+        {
+          "name": "Kubernetes Official Documentation and Interactive Tutorials",
+          "url": "https://kubernetes.io/docs/tutorials/",
+          "provider": "Cloud Native Computing Foundation (CNCF)",
+          "type": "Interactive Tutorial",
+          "cost": "Free",
+          "description": "Hands-on tutorials for Pods, Deployments, Services, Ingress, and cluster configuration."
+        },
+        {
+          "name": "Introduction to Kubernetes (LFS158x)",
+          "url": "https://www.edx.org/learn/kubernetes/the-linux-foundation-introduction-to-kubernetes",
+          "provider": "The Linux Foundation / edX (Free Audit)",
+          "type": "Course",
+          "cost": "Free Audit",
+          "description": "Comprehensive course on Kubernetes architecture, deployment management, and cloud-native workflows."
+        }
+      ]
+    },
+    "CD-012": {
+      "topic": "Service Mesh Architecture and Traffic Management",
+      "recommended_weight": 8.0,
+      "level": "Advanced",
+      "reason": "Provides mTLS encryption, canary routing, observability, and circuit breaking for microservices architectures.",
+      "items": [
+        {
+          "name": "Istio Service Mesh Documentation & Getting Started",
+          "url": "https://istio.io/latest/docs/setup/getting-started/",
+          "provider": "CNCF / Istio Project",
+          "type": "Documentation",
+          "cost": "Free",
+          "description": "Practical installation and configuration guide for Envoy proxies, VirtualServices, and security policies."
+        },
+        {
+          "name": "Linkerd Official Documentation",
+          "url": "https://linkerd.io/2/overview/",
+          "provider": "CNCF / Linkerd",
+          "type": "Documentation",
+          "cost": "Free",
+          "description": "Lightweight, security-focused service mesh documentation with zero-config mutual TLS."
+        }
+      ]
+    },
+    "CD-013": {
+      "topic": "Chaos Engineering and Resilience Testing",
+      "recommended_weight": 8.0,
+      "level": "Advanced",
+      "reason": "Proactively identifies single points of failure in distributed infrastructure before they impact end users.",
+      "items": [
+        {
+          "name": "Principles of Chaos Engineering",
+          "url": "https://principlesofchaos.org/",
+          "provider": "Chaos Engineering Community",
+          "type": "Manifesto / Standard",
+          "cost": "Free",
+          "description": "Core principles defining steady-state hypotheses, blast radius containment, and real-world failure injection."
+        },
+        {
+          "name": "Chaos Mesh Documentation and Tutorials",
+          "url": "https://chaos-mesh.org/docs/",
+          "provider": "CNCF / Chaos Mesh",
+          "type": "Documentation",
+          "cost": "Free",
+          "description": "Cloud-native chaos engineering platform for injecting network delay, pod killing, and disk faults."
+        }
+      ]
+    },
+    "CD-014": {
+      "topic": "GitOps and Declarative Continuous Delivery",
+      "recommended_weight": 10.0,
+      "level": "Intermediate",
+      "reason": "Uses Git repositories as the single source of truth for infrastructure and application configuration.",
+      "items": [
+        {
+          "name": "OpenGitOps Principles",
+          "url": "https://opengitops.dev/",
+          "provider": "CNCF OpenGitOps Working Group",
+          "type": "Standard",
+          "cost": "Free",
+          "description": "Formal definitions and principles of declarative, versioned, pull-based automated delivery."
+        },
+        {
+          "name": "Argo CD Official Getting Started Guide",
+          "url": "https://argo-cd.readthedocs.io/en/stable/getting_started/",
+          "provider": "CNCF / Argo Project",
+          "type": "Documentation",
+          "cost": "Free",
+          "description": "Declarative GitOps continuous delivery tool for Kubernetes with automated synchronization."
+        }
+      ]
+    },
+    "CD-015": {
+      "topic": "Cloud Financial Management and FinOps",
+      "recommended_weight": 8.0,
+      "level": "Intermediate",
+      "reason": "Essential practice bringing financial accountability to variable cloud spend and infrastructure optimization.",
+      "items": [
+        {
+          "name": "FinOps Foundation Framework",
+          "url": "https://www.finops.org/framework/",
+          "provider": "FinOps Foundation / Linux Foundation",
+          "type": "Framework / Guidance",
+          "cost": "Free",
+          "description": "Operating model for cloud cost management, allocation, forecasting, and rate optimization."
+        },
+        {
+          "name": "AWS Well-Architected Framework: Cost Optimization Pillar",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html",
+          "provider": "Amazon Web Services (AWS)",
+          "type": "Whitepaper / Guide",
+          "cost": "Free",
+          "description": "Architectural guidelines for eliminating unneeded costs and matching infrastructure capacity to demand."
+        }
+      ]
+    }
+  }
+}

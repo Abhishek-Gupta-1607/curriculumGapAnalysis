@@ -1,0 +1,64 @@
+{
+  "description": "Ground truth known gaps for curriculum gap analysis evaluation. Exactly 5 framework competency IDs per domain are intentionally omitted from each sample syllabus.",
+  "limitation": "The evaluation uses a small, author-designed benchmark of three syllabi and 15 known gaps. Results demonstrate performance on these test cases and do not establish generalisation to all academic curricula.",
+  "total_known_gaps": 15,
+  "domains": {
+    "Data Science": {
+      "syllabus_file": "data/syllabi/data_science.pdf",
+      "framework_file": "data/frameworks/data_science_framework.pdf",
+      "total_framework_competencies": 15,
+      "known_covered_ids": [
+        "DS-001", "DS-002", "DS-003", "DS-004", "DS-005",
+        "DS-006", "DS-007", "DS-008", "DS-009", "DS-010"
+      ],
+      "known_missing_ids": [
+        "DS-011", "DS-012", "DS-013", "DS-014", "DS-015"
+      ],
+      "known_missing_titles": {
+        "DS-011": "MLOps and Model Deployment Pipelines",
+        "DS-012": "Big Data Technologies and Distributed Computing",
+        "DS-013": "Deep Learning and Neural Network Architectures",
+        "DS-014": "Natural Language Processing and Text Analytics",
+        "DS-015": "Data Ethics, Algorithmic Bias and Responsible AI"
+      }
+    },
+    "Web Development": {
+      "syllabus_file": "data/syllabi/web_development.pdf",
+      "framework_file": "data/frameworks/web_development_framework.pdf",
+      "total_framework_competencies": 15,
+      "known_covered_ids": [
+        "WD-001", "WD-002", "WD-003", "WD-004", "WD-005",
+        "WD-006", "WD-007", "WD-008", "WD-009", "WD-010"
+      ],
+      "known_missing_ids": [
+        "WD-011", "WD-012", "WD-013", "WD-014", "WD-015"
+      ],
+      "known_missing_titles": {
+        "WD-011": "Web Accessibility (WCAG 2.1 / 2.2 Standards)",
+        "WD-012": "Progressive Web Applications (PWA) and Service Workers",
+        "WD-013": "GraphQL API Architecture and Implementation",
+        "WD-014": "Containerization and Docker for Web Applications",
+        "WD-015": "Web Performance Optimization and Core Web Vitals"
+      }
+    },
+    "Cloud and DevOps": {
+      "syllabus_file": "data/syllabi/cloud_devops.pdf",
+      "framework_file": "data/frameworks/cloud_devops_framework.pdf",
+      "total_framework_competencies": 15,
+      "known_covered_ids": [
+        "CD-001", "CD-002", "CD-003", "CD-004", "CD-005",
+        "CD-006", "CD-007", "CD-008", "CD-009", "CD-010"
+      ],
+      "known_missing_ids": [
+        "CD-011", "CD-012", "CD-013", "CD-014", "CD-015"
+      ],
+      "known_missing_titles": {
+        "CD-011": "Kubernetes and Container Orchestration",
+        "CD-012": "Service Mesh Architecture and Traffic Management",
+        "CD-013": "Chaos Engineering and Resilience Testing",
+        "CD-014": "GitOps and Declarative Continuous Delivery",
+        "CD-015": "Cloud Financial Management and FinOps"
+      }
+    }
+  }
+}

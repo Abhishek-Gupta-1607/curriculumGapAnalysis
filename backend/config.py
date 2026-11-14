@@ -58,9 +58,12 @@ class Settings:
 
     # ── LLM Configuration ──
     LLM_ENABLED: bool = field(default_factory=lambda: _get_bool("LLM_ENABLED"))
-    LLM_PROVIDER: str = field(default_factory=lambda: os.getenv("LLM_PROVIDER", ""))
-    LLM_MODEL: str = field(default_factory=lambda: os.getenv("LLM_MODEL", ""))
+    LLM_PROVIDER: str = field(default_factory=lambda: os.getenv("LLM_PROVIDER", "openai").lower())
+    LLM_MODEL: str = field(default_factory=lambda: os.getenv("LLM_MODEL", "gpt-4o-mini"))
     LLM_API_KEY: str = field(default_factory=lambda: os.getenv("LLM_API_KEY", ""))
+    LLM_BASE_URL: str = field(default_factory=lambda: os.getenv("LLM_BASE_URL", ""))
+    AZURE_OPENAI_ENDPOINT: str = field(default_factory=lambda: os.getenv("AZURE_OPENAI_ENDPOINT", ""))
+    AZURE_OPENAI_API_VERSION: str = field(default_factory=lambda: os.getenv("AZURE_OPENAI_API_VERSION", "2024-02-15-preview"))
 
     # ── Embedding Model ──
     EMBEDDING_MODEL: str = field(

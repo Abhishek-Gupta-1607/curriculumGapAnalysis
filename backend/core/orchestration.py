@@ -137,28 +137,80 @@ def _add_mock_service(kernel) -> None:
 
 def _add_llm_service(kernel) -> None:
     """
-    Add a real LLM service when LLM_ENABLED=true.
+    Add a real LLM service when LLM_ENABLED=true and LLM_API_KEY is provided.
 
-    Currently supports OpenAI. Can be extended for Azure, etc.
+    Supports:
+    - "openai": Standard OpenAI (gpt-4o, gpt-4o-mini, gpt-3.5-turbo)
+    - "azure" / "azure_openai": Microsoft Azure OpenAI Service
+    - "groq" / "deepseek" / "openrouter" / "custom": OpenAI-compatible base URLs
     """
     try:
-        if settings.LLM_PROVIDER == "openai":
+        provider = settings.LLM_PROVIDER.lower()
+        model_name = settings.LLM_MODEL or "gpt-4o-mini"
+
+        if provider in ("azure", "azure_openai"):
+            from semantic_kernel.connectors.ai.open_ai import AzureChatCompletion
+
+            service = AzureChatCompletion(
+                deployment_name=model_name,
+                endpoint=settings.AZURE_OPENAI_ENDPOINT,
+                api_key=settings.LLM_API_KEY,
+                api_version=settings.AZURE_OPENAI_API_VERSION or "2024-02-15-preview",
+            )
+            kernel.add_service(service)
+            logger.info(f"[Orchestration] Added Azure OpenAI service: {model_name}")
+
+        elif provider in ("grok", "xai", "groq", "deepseek", "openrouter", "custom") or settings.LLM_BASE_URL:
+            import openai
+            from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
+
+            # Map known base URLs and default models if not explicitly set
+            base_url = settings.LLM_BASE_URL
+            if not base_url:
+                if provider in ("grok", "xai"):
+                    base_url = "https://api.x.ai/v1"
+                    if not settings.LLM_MODEL:
+                        model_name = "grok-2-latest"
+                elif provider == "groq":
+                    base_url = "https://api.groq.com/openai/v1"
+                    if not settings.LLM_MODEL:
+                        model_name = "llama-3.3-70b-versatile"
+                elif provider == "deepseek":
+                    base_url = "https://api.deepseek.com/v1"
+                    if not settings.LLM_MODEL:
+                        model_name = "deepseek-chat"
+                elif provider == "openrouter":
+                    base_url = "https://openrouter.ai/api/v1"
+                    if not settings.LLM_MODEL:
+                        model_name = "google/gemini-2.0-flash-001"
+
+            async_client = openai.AsyncOpenAI(
+                api_key=settings.LLM_API_KEY,
+                base_url=base_url if base_url else None,
+            )
+            service = OpenAIChatCompletion(
+                ai_model_id=model_name,
+                async_client=async_client,
+            )
+            kernel.add_service(service)
+            logger.info(f"[Orchestration] Added {provider.upper()} OpenAI-compatible service: {model_name}")
+
+        elif provider == "openai":
             from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
 
             service = OpenAIChatCompletion(
-                ai_model_id=settings.LLM_MODEL or "gpt-4o-mini",
+                ai_model_id=model_name,
                 api_key=settings.LLM_API_KEY,
             )
             kernel.add_service(service)
-            logger.info(
-                f"[Orchestration] Added OpenAI service: {settings.LLM_MODEL}"
-            )
+            logger.info(f"[Orchestration] Added OpenAI service: {model_name}")
+
         else:
             logger.warning(
-                f"[Orchestration] Unknown LLM provider: {settings.LLM_PROVIDER}. "
+                f"[Orchestration] Unknown LLM provider: '{settings.LLM_PROVIDER}'. "
                 f"Falling back to mock service."
             )
             _add_mock_service(kernel)
     except Exception as e:
-        logger.error(f"[Orchestration] Failed to add LLM service: {e}. Using mock.")
+        logger.error(f"[Orchestration] Failed to add LLM service: {e}. Falling back to mock service.")
         _add_mock_service(kernel)

@@ -29,8 +29,9 @@ export default function Recommendations({ currentRunId, setCurrentRunId }) {
       fetchRunDetail(selectedRunId),
     ])
       .then(([recsData, detailData]) => {
-        setRecommendations(recsData.recommendations || []);
-        setReviewerResults(detailData.reviewer_results || []);
+        const allRecs = recsData.all_recommendations || recsData.recommendations || detailData?.recommendations || [];
+        setRecommendations(allRecs);
+        setReviewerResults(recsData.reviewer_results || detailData?.reviewer_results || []);
       })
       .catch((err) => console.error('Failed to load recommendations', err))
       .finally(() => setLoading(false));

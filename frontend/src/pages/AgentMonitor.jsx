@@ -16,14 +16,32 @@ import {
   FileCheck
 } from 'lucide-react';
 
-const AGENT_ICONS = {
+const AGENT_ICON_MAP = {
+  syllabusparser: FileCheck,
   syllabus_parser: FileCheck,
+  skillsretriever: Database,
   skills_retriever: Database,
+  gapdetector: Search,
   gap_detector: Search,
+  resourcerecommender: BookOpen,
   resource_recommender: BookOpen,
   reviewer: ShieldCheck,
+  revieweragent: ShieldCheck,
+  curriculumcoordinator: Cpu,
   coordinator: Cpu,
 };
+
+function getAgentIcon(name) {
+  if (!name) return Cpu;
+  const key = name.toLowerCase().replace(/[^a-z]/g, '');
+  return AGENT_ICON_MAP[key] || Cpu;
+}
+
+function formatAgentName(name) {
+  if (!name) return 'Specialist Agent';
+  // Insert space before capital letters and replace underscores
+  return name.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+}
 
 export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
   const [searchParams] = useSearchParams();
@@ -42,7 +60,7 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
       setRuns(data);
       if (!selectedRunId && data.length > 0) {
         setSelectedRunId(data[0].id);
-        setCurrentRunId(data[0].id);
+        if (setCurrentRunId) setCurrentRunId(data[0].id);
       }
     });
   }, []);
@@ -60,7 +78,11 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
           fetchRunDetail(selectedRunId),
         ]);
         if (isMounted) {
-          setEvents(eventsData.events || []);
+          // eventsData may be an array directly or an object { events: [...] }
+          const traceList = Array.isArray(eventsData)
+            ? eventsData
+            : (eventsData?.events || []);
+          setEvents(traceList);
           setRunDetail(detailData);
         }
       } catch (err) {
@@ -76,7 +98,7 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
 
   const handleSelectRun = (id) => {
     setSelectedRunId(id);
-    setCurrentRunId(id);
+    if (setCurrentRunId) setCurrentRunId(id);
   };
 
   return (
@@ -94,7 +116,7 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
           <label style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Select Run:</label>
           <select
             className="form-control"
-            style={{ width: 220 }}
+            style={{ width: 260 }}
             value={selectedRunId}
             onChange={(e) => handleSelectRun(e.target.value)}
           >
@@ -110,8 +132,8 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
       {/* Run Summary Banner */}
       {runDetail && (
         <div className="card" style={{ marginBottom: 24, backgroundColor: '#111a2e' }}>
-          <div className="flex-between">
-            <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
+          <div className="flex-between" style={{ flexWrap: 'wrap', gap: 16 }}>
+            <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
               <div>
                 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Domain</span>
                 <div style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-main)' }}>{runDetail.domain}</div>
@@ -172,17 +194,18 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
         ) : (
           <div className="timeline">
             {events.map((evt, idx) => {
-              const Icon = AGENT_ICONS[evt.agent_name] || Cpu;
+              const Icon = getAgentIcon(evt.agent_name);
+              const formattedName = formatAgentName(evt.agent_name);
               return (
-                <div key={evt.id || idx} className="timeline-item">
+                <div key={evt.event_id || evt.id || idx} className="timeline-item">
                   <div className="timeline-icon-box completed">
                     <Icon size={20} />
                   </div>
                   <div className="timeline-content">
-                    <div className="flex-between" style={{ marginBottom: 8 }}>
+                    <div className="flex-between" style={{ marginBottom: 8, flexWrap: 'wrap', gap: 8 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <span style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-main)', textTransform: 'capitalize' }}>
-                          Step {evt.step_number}: {evt.agent_name.replace('_', ' ')}
+                        <span style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-main)' }}>
+                          Step {evt.step_number}: {formattedName}
                         </span>
                         <span className="badge badge-covered" style={{ fontSize: '0.7rem' }}>
                           <CheckCircle2 size={12} />
@@ -193,7 +216,7 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
                       <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                           <Clock size={13} />
-                          <span>{evt.duration_ms ? `${evt.duration_ms} ms` : '< 50 ms'}</span>
+                          <span>{evt.duration_ms !== undefined ? `${evt.duration_ms} ms` : '< 50 ms'}</span>
                         </div>
                         <button
                           className="btn btn-secondary btn-sm"
@@ -227,13 +250,13 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
       <Modal
         isOpen={!!inspectEvent}
         onClose={() => setInspectEvent(null)}
-        title={inspectEvent ? `Agent Trace: ${inspectEvent.agent_name} (Step ${inspectEvent.step_number})` : ''}
+        title={inspectEvent ? `Agent Trace: ${formatAgentName(inspectEvent.agent_name)} (Step ${inspectEvent.step_number})` : ''}
       >
         {inspectEvent && (
           <div>
             <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 4 }}>Agent Name:</div>
-              <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>{inspectEvent.agent_name}</div>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 4 }}>Agent:</div>
+              <div style={{ fontWeight: 600, color: 'var(--text-main)' }}>{formatAgentName(inspectEvent.agent_name)}</div>
             </div>
 
             <div style={{ marginBottom: 16 }}>
@@ -252,7 +275,7 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
             </div>
 
             <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: 12 }}>
-              Timestamp: {new Date(inspectEvent.created_at).toLocaleString()}
+              Event Timestamp: {new Date(inspectEvent.finished_at || inspectEvent.started_at || inspectEvent.created_at || Date.now()).toLocaleString()}
             </div>
           </div>
         )}

@@ -28,7 +28,7 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="sidebar-header">
         <div className="brand-title">
-          <Cpu className="text-primary" size={24} style={{ color: '#6366f1' }} />
+          <Cpu size={24} style={{ color: '#2563eb', filter: 'drop-shadow(0 0 8px rgba(37, 99, 235, 0.5))' }} />
           <span>Curriculum AI</span>
           <span className="brand-badge">Multi-Agent</span>
         </div>
@@ -56,7 +56,7 @@ export default function Sidebar() {
 
       <div className="sidebar-footer">
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-          <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ccff00', boxShadow: '0 0 8px rgba(204, 255, 0, 0.7)', display: 'inline-block' }}></span>
           <span style={{ fontWeight: 600, color: '#f8fafc' }}>Local Mode (Offline)</span>
         </div>
         <div>PyMuPDF · ChromaDB · MiniLM</div>

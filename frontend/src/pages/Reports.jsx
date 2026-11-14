@@ -82,7 +82,7 @@ export default function Reports({ currentRunId, setCurrentRunId }) {
             <div>
               <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Selected Run Report</div>
               <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-main)', marginTop: 2 }}>
-                Report for Run <span className="text-mono" style={{ color: '#818cf8' }}>{selectedRunId}</span>
+                Report for Run <span className="text-mono" style={{ color: '#60a5fa' }}>{selectedRunId}</span>
               </h2>
             </div>
 
@@ -122,7 +122,7 @@ export default function Reports({ currentRunId, setCurrentRunId }) {
           {/* Executive Overview */}
           <div className="card">
             <div className="card-title">
-              <FileText size={18} style={{ color: '#6366f1' }} />
+              <FileText size={18} style={{ color: '#2563eb' }} />
               <span>Executive Overview</span>
             </div>
 
@@ -157,7 +157,7 @@ export default function Reports({ currentRunId, setCurrentRunId }) {
           {/* Institutional Compliance Checklist */}
           <div className="card">
             <div className="card-title">
-              <CheckCircle2 size={18} style={{ color: '#10b981' }} />
+              <CheckCircle2 size={18} style={{ color: '#a3e635' }} />
               <span>Institutional Audit & Verification</span>
             </div>
 

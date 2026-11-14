@@ -170,7 +170,7 @@ export default function Recommendations({ currentRunId, setCurrentRunId }) {
                     <Award size={12} />
                     Weight: {rec.suggested_weight_percentage}%
                   </span>
-                  <span className="badge badge-secondary" style={{ backgroundColor: '#1e293b' }}>
+                  <span className="badge badge-secondary" style={{ backgroundColor: '#0c1322' }}>
                     {rec.learning_level}
                   </span>
                 </div>
@@ -184,7 +184,7 @@ export default function Recommendations({ currentRunId, setCurrentRunId }) {
               {/* Resource & Citation Box */}
               <div
                 style={{
-                  backgroundColor: '#111a2e',
+                  backgroundColor: '#070c17',
                   border: '1px solid var(--border-color)',
                   borderRadius: 8,
                   padding: 14,
@@ -197,14 +197,14 @@ export default function Recommendations({ currentRunId, setCurrentRunId }) {
               >
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.82rem', color: 'var(--text-main)', marginBottom: 2 }}>
-                    <BookOpen size={14} style={{ color: '#818cf8' }} />
+                    <BookOpen size={14} style={{ color: '#3b82f6' }} />
                     <strong style={{ fontWeight: 600 }}>{rec.recommended_reading}</strong>
                   </div>
                   <a
                     href={rec.resource_url}
                     target="_blank"
                     rel="noreferrer"
-                    style={{ fontSize: '0.78rem', color: '#6366f1', display: 'flex', alignItems: 'center', gap: 4 }}
+                    style={{ fontSize: '0.78rem', color: '#60a5fa', display: 'flex', alignItems: 'center', gap: 4 }}
                   >
                     <span>{rec.resource_url}</span>
                     <ExternalLink size={11} />
@@ -216,7 +216,7 @@ export default function Recommendations({ currentRunId, setCurrentRunId }) {
                   <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#f8fafc' }}>
                     {rec.framework_citation}
                   </div>
-                  <div className="text-mono" style={{ fontSize: '0.75rem', color: '#10b981' }}>
+                  <div className="text-mono" style={{ fontSize: '0.75rem', color: '#a3e635' }}>
                     {rec.evidence_id}
                   </div>
                 </div>

@@ -225,7 +225,7 @@ export default function GapAnalysis({ currentRunId, setCurrentRunId }) {
             <div className="grid-2" style={{ marginBottom: 12 }}>
               <div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Page Number</div>
-                <div style={{ fontWeight: 600, color: '#818cf8' }}>Page {selectedEvidence.page || '1'}</div>
+                <div style={{ fontWeight: 600, color: '#60a5fa' }}>Page {selectedEvidence.page || '1'}</div>
               </div>
               <div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Section</div>
@@ -239,7 +239,7 @@ export default function GapAnalysis({ currentRunId, setCurrentRunId }) {
                 href={selectedEvidence.source_url}
                 target="_blank"
                 rel="noreferrer"
-                style={{ fontSize: '0.8rem', color: '#6366f1', wordBreak: 'break-all' }}
+                style={{ fontSize: '0.8rem', color: '#60a5fa', wordBreak: 'break-all' }}
               >
                 {selectedEvidence.source_url || 'https://csrc.nist.gov/publications/detail/sp/800-181/rev-1/final'}
               </a>

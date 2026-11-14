@@ -26,19 +26,19 @@ export default function Header({ currentRunId, onSelectRun }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.8rem', color: '#94a3b8' }}>
           <Server size={14} />
           <span>Semantic Kernel:</span>
-          <span style={{ color: '#10b981', fontWeight: 600 }}>Ready</span>
+          <span style={{ color: '#a3e635', fontWeight: 600 }}>Ready</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.8rem', color: '#94a3b8' }}>
           <Database size={14} />
           <span>Vector DB:</span>
-          <span style={{ color: '#818cf8', fontWeight: 600 }}>ChromaDB Local</span>
+          <span style={{ color: '#60a5fa', fontWeight: 600 }}>ChromaDB Local</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.8rem', color: '#94a3b8' }}>
           <ShieldCheck size={14} />
           <span>Reviewer Audit:</span>
-          <span style={{ color: '#10b981', fontWeight: 600 }}>Active</span>
+          <span style={{ color: '#a3e635', fontWeight: 600 }}>Active</span>
         </div>
       </div>
     </header>

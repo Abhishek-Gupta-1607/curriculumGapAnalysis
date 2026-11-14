@@ -206,11 +206,11 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
 
       {/* Live Pipeline Execution Progress Banner (When Running) */}
       {isAnimating ? (
-        <div className="card" style={{ marginBottom: 24, backgroundColor: '#0f172a', border: '1px solid #6366f1', padding: 20, boxShadow: '0 8px 24px rgba(99, 102, 241, 0.18)' }}>
+        <div className="card" style={{ marginBottom: 24, backgroundColor: '#070c17', border: '1px solid var(--primary)', padding: 20, boxShadow: '0 8px 30px rgba(37, 99, 235, 0.25)' }}>
           <div className="flex-between" style={{ flexWrap: 'wrap', gap: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ width: 44, height: 44, borderRadius: '50%', backgroundColor: 'rgba(99, 102, 241, 0.2)', border: '2px solid #6366f1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <RefreshCw size={22} className="animate-spin" style={{ color: '#818cf8' }} />
+              <div style={{ width: 44, height: 44, borderRadius: '50%', backgroundColor: 'rgba(37, 99, 235, 0.2)', border: '2px solid var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <RefreshCw size={22} className="animate-spin" style={{ color: '#3b82f6' }} />
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -223,7 +223,7 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
                 </div>
                 <div style={{ fontSize: '0.84rem', color: '#94a3b8', marginTop: 4 }}>
                   Active Agent:{' '}
-                  <strong style={{ color: '#818cf8' }}>
+                  <strong style={{ color: '#60a5fa' }}>
                     {currentActiveEvent ? formatAgentName(currentActiveEvent.agent_name) : `Step ${currentActiveStep}`}
                   </strong>
                   {' — '}
@@ -243,12 +243,13 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
           </div>
 
           {/* Animated Progress Bar */}
-          <div style={{ width: '100%', height: 6, backgroundColor: '#1e293b', borderRadius: 3, overflow: 'hidden', marginTop: 16 }}>
+          <div style={{ width: '100%', height: 6, backgroundColor: '#0c1322', borderRadius: 3, overflow: 'hidden', marginTop: 16 }}>
             <div
               style={{
                 width: `${(currentActiveStep / totalSteps) * 100}%`,
                 height: '100%',
-                backgroundColor: '#6366f1',
+                backgroundColor: 'var(--primary)',
+                boxShadow: '0 0 10px rgba(37, 99, 235, 0.7)',
                 transition: 'width 0.8s ease-in-out',
               }}
             />
@@ -257,7 +258,7 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
       ) : (
         /* Completed Results Summary Banner (Revealed After All Agents Finish) */
         runDetail && (
-          <div className="card" style={{ marginBottom: 24, backgroundColor: '#111a2e', border: '1px solid #1e293b' }}>
+          <div className="card" style={{ marginBottom: 24, backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)' }}>
             <div className="flex-between" style={{ flexWrap: 'wrap', gap: 16 }}>
               <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
                 <div>
@@ -279,7 +280,7 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
                 </div>
                 <div style={{ borderLeft: '1px solid var(--border-color)', paddingLeft: 24 }}>
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Reviewer Approved</span>
-                  <div style={{ fontWeight: 700, fontSize: '1.05rem', color: '#10b981' }}>{runDetail.recommendations?.length || 0}</div>
+                  <div style={{ fontWeight: 700, fontSize: '1.05rem', color: '#a3e635' }}>{runDetail.recommendations?.length || 0}</div>
                 </div>
               </div>
 
@@ -377,9 +378,10 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
                             className="badge"
                             style={{
                               fontSize: '0.7rem',
-                              backgroundColor: '#4f46e5',
+                              backgroundColor: '#2563eb',
                               color: '#ffffff',
-                              border: '1px solid #818cf8',
+                              border: '1px solid #3b82f6',
+                              boxShadow: '0 0 10px rgba(37, 99, 235, 0.45)',
                               display: 'inline-flex',
                               alignItems: 'center',
                               gap: 5,
@@ -395,9 +397,9 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
                             className="badge"
                             style={{
                               fontSize: '0.7rem',
-                              backgroundColor: '#1e293b',
+                              backgroundColor: '#0c1322',
                               color: 'var(--text-dim)',
-                              border: '1px solid #334155',
+                              border: '1px solid #1e2e4a',
                               display: 'inline-flex',
                               alignItems: 'center',
                               gap: 5,
@@ -417,7 +419,7 @@ export default function AgentMonitor({ currentRunId, setCurrentRunId }) {
                               <span>{evt.duration_ms !== undefined ? `${evt.duration_ms} ms` : '< 50 ms'}</span>
                             </>
                           ) : isRunning ? (
-                            <span style={{ color: '#818cf8', fontStyle: 'italic' }}>Active Execution...</span>
+                            <span style={{ color: '#60a5fa', fontStyle: 'italic' }}>Active Execution...</span>
                           ) : (
                             <span style={{ color: 'var(--text-dim)' }}>Pending...</span>
                           )}

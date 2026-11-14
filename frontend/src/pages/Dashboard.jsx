@@ -150,7 +150,7 @@ export default function Dashboard({ setCurrentRunId }) {
                       return (
                         <tr key={rid}>
                           <td style={{ fontWeight: 600 }}>{run.domain}</td>
-                          <td className="text-mono" style={{ fontSize: '0.75rem', color: '#818cf8' }}>
+                          <td className="text-mono" style={{ fontSize: '0.75rem', color: '#60a5fa' }}>
                             #{shortId} {time ? <span style={{ color: 'var(--text-dim)' }}>({time})</span> : ''}
                           </td>
                           <td>
@@ -158,7 +158,7 @@ export default function Dashboard({ setCurrentRunId }) {
                               {run.status}
                             </span>
                           </td>
-                          <td style={{ fontWeight: 700, color: (run.total_gaps || run.gaps_count) ? '#ef4444' : '#10b981' }}>
+                          <td style={{ fontWeight: 700, color: (run.total_gaps || run.gaps_count) ? '#ef4444' : '#a3e635' }}>
                             {run.total_gaps || run.gaps_count || 0}
                           </td>
                           <td>
@@ -225,14 +225,14 @@ export default function Dashboard({ setCurrentRunId }) {
             <div style={{ height: 260, width: '100%' }}>
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#263352" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#141f33" />
                   <XAxis dataKey="domain" stroke="#94a3b8" fontSize={11} />
                   <YAxis stroke="#94a3b8" fontSize={11} />
                   <Tooltip
-                    contentStyle={{ backgroundColor: '#151e32', borderColor: '#263352', borderRadius: 8, color: '#f8fafc' }}
+                    contentStyle={{ backgroundColor: '#080d19', borderColor: '#141f33', borderRadius: 8, color: '#f8fafc' }}
                   />
                   <Bar dataKey="gaps" fill="#ef4444" name="Gaps Identified" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="recommendations" fill="#10b981" name="Recommendations" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="recommendations" fill="#a3e635" name="Recommendations" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -257,13 +257,13 @@ export default function Dashboard({ setCurrentRunId }) {
             <div
               key={agent.step}
               style={{
-                backgroundColor: '#111a2e',
+                backgroundColor: '#070c17',
                 border: '1px solid var(--border-color)',
                 borderRadius: 8,
                 padding: 12,
               }}
             >
-              <div style={{ fontSize: '0.72rem', color: '#818cf8', fontWeight: 700, marginBottom: 4 }}>
+              <div style={{ fontSize: '0.72rem', color: '#3b82f6', fontWeight: 700, marginBottom: 4 }}>
                 AGENT {agent.step}
               </div>
               <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: 6 }}>

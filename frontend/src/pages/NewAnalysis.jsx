@@ -149,7 +149,7 @@ export default function NewAnalysis({ setCurrentRunId }) {
             <div style={{ marginBottom: 12 }}>
               <div className="flex-between" style={{ fontSize: '0.78rem', marginBottom: 4 }}>
                 <span>Covered Threshold:</span>
-                <span className="text-mono" style={{ color: '#10b981', fontWeight: 600 }}>{coveredThreshold}</span>
+                <span className="text-mono" style={{ color: '#a3e635', fontWeight: 600 }}>{coveredThreshold}</span>
               </div>
               <input
                 type="range"
@@ -292,9 +292,9 @@ export default function NewAnalysis({ setCurrentRunId }) {
 
         {/* Live Multi-Agent Execution Progress Card */}
         {loading && (
-          <div className="card" style={{ marginBottom: 20, backgroundColor: '#0f172a', border: '1px solid #6366f1', padding: 20, boxShadow: '0 8px 24px rgba(99, 102, 241, 0.15)', textAlign: 'center' }}>
+          <div className="card" style={{ marginBottom: 20, backgroundColor: '#070c17', border: '1px solid var(--primary)', padding: 20, boxShadow: '0 8px 30px rgba(37, 99, 235, 0.25)', textAlign: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 8 }}>
-              <RefreshCw size={22} className="animate-spin" style={{ color: '#818cf8' }} />
+              <RefreshCw size={22} className="animate-spin" style={{ color: '#3b82f6' }} />
               <strong style={{ fontSize: '1.05rem', color: 'var(--text-main)' }}>
                 Initializing 6-Agent Sequential Pipeline for {domain}...
               </strong>

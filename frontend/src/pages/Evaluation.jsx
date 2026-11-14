@@ -126,7 +126,7 @@ export default function Evaluation() {
                     </td>
                     <td className="text-mono">{(((row.precision ?? 1.0)) * 100).toFixed(0)}%</td>
                     <td className="text-mono">{(((row.recall ?? 1.0)) * 100).toFixed(0)}%</td>
-                    <td className="text-mono" style={{ color: '#818cf8', fontWeight: 600 }}>
+                    <td className="text-mono" style={{ color: '#60a5fa', fontWeight: 600 }}>
                       {(row.f1_score ?? row.f1 ?? 1.0).toFixed(2)}
                     </td>
                   </tr>
@@ -144,16 +144,16 @@ export default function Evaluation() {
           <div style={{ height: 260, width: '100%' }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#263352" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#141f33" />
                 <XAxis dataKey="name" stroke="#94a3b8" fontSize={11} />
                 <YAxis stroke="#94a3b8" fontSize={11} domain={[0, 100]} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#151e32', borderColor: '#263352', borderRadius: 8, color: '#f8fafc' }}
+                  contentStyle={{ backgroundColor: '#080d19', borderColor: '#141f33', borderRadius: 8, color: '#f8fafc' }}
                 />
                 <Legend wrapperStyle={{ fontSize: '0.8rem', color: '#94a3b8' }} />
-                <Bar dataKey="Precision" fill="#10b981" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="Recall" fill="#6366f1" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="F1" fill="#f59e0b" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="Precision" fill="#a3e635" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="Recall" fill="#2563eb" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="F1" fill="#ccff00" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -170,8 +170,8 @@ export default function Evaluation() {
         </p>
 
         <div className="grid-3">
-          <div style={{ backgroundColor: '#111a2e', padding: 14, borderRadius: 8, border: '1px solid var(--border-color)' }}>
-            <h4 style={{ fontSize: '0.9rem', color: '#818cf8', marginBottom: 8 }}>Data Science (NIST/ACM)</h4>
+          <div style={{ backgroundColor: '#070c17', padding: 14, borderRadius: 8, border: '1px solid var(--border-color)' }}>
+            <h4 style={{ fontSize: '0.9rem', color: '#3b82f6', marginBottom: 8 }}>Data Science (NIST/ACM)</h4>
             <ul style={{ fontSize: '0.8rem', color: '#cbd5e1', paddingLeft: 18, lineHeight: 1.6 }}>
               <li>DS-011: Model Deployment & MLOps</li>
               <li>DS-012: Data Engineering Pipelines</li>
@@ -181,8 +181,8 @@ export default function Evaluation() {
             </ul>
           </div>
 
-          <div style={{ backgroundColor: '#111a2e', padding: 14, borderRadius: 8, border: '1px solid var(--border-color)' }}>
-            <h4 style={{ fontSize: '0.9rem', color: '#818cf8', marginBottom: 8 }}>Web Development (ESCO/W3C)</h4>
+          <div style={{ backgroundColor: '#070c17', padding: 14, borderRadius: 8, border: '1px solid var(--border-color)' }}>
+            <h4 style={{ fontSize: '0.9rem', color: '#3b82f6', marginBottom: 8 }}>Web Development (ESCO/W3C)</h4>
             <ul style={{ fontSize: '0.8rem', color: '#cbd5e1', paddingLeft: 18, lineHeight: 1.6 }}>
               <li>WD-011: Web Accessibility (WCAG 2.2)</li>
               <li>WD-012: Performance Optimization & Core Web Vitals</li>
@@ -192,8 +192,8 @@ export default function Evaluation() {
             </ul>
           </div>
 
-          <div style={{ backgroundColor: '#111a2e', padding: 14, borderRadius: 8, border: '1px solid var(--border-color)' }}>
-            <h4 style={{ fontSize: '0.9rem', color: '#818cf8', marginBottom: 8 }}>Cloud & DevOps (NIST SP 500)</h4>
+          <div style={{ backgroundColor: '#070c17', padding: 14, borderRadius: 8, border: '1px solid var(--border-color)' }}>
+            <h4 style={{ fontSize: '0.9rem', color: '#3b82f6', marginBottom: 8 }}>Cloud & DevOps (NIST SP 500)</h4>
             <ul style={{ fontSize: '0.8rem', color: '#cbd5e1', paddingLeft: 18, lineHeight: 1.6 }}>
               <li>CD-011: Infrastructure as Code (Terraform)</li>
               <li>CD-012: Container Orchestration (Kubernetes)</li>

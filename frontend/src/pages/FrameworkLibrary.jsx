@@ -108,7 +108,7 @@ export default function FrameworkLibrary() {
       )}
 
       {/* ChromaDB Status Card */}
-      <div className="card" style={{ marginBottom: 24, backgroundColor: '#111a2e' }}>
+      <div className="card" style={{ marginBottom: 24, backgroundColor: 'var(--bg-card)' }}>
         <div className="flex-between" style={{ flexWrap: 'wrap', gap: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <div className="timeline-icon-box completed">
@@ -119,7 +119,7 @@ export default function FrameworkLibrary() {
                 Persistent Vector Store: ChromaDB
               </div>
               <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                Location: <span className="text-mono" style={{ color: '#818cf8' }}>storage/chroma_db/</span>
+                Location: <span className="text-mono" style={{ color: '#60a5fa' }}>storage/chroma_db/</span>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@ export default function FrameworkLibrary() {
             </div>
             <div>
               <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Total Indexed Chunks</div>
-              <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#10b981' }}>{data?.total_chunks || 104} chunks</div>
+              <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#a3e635' }}>{data?.total_chunks || 104} chunks</div>
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function FrameworkLibrary() {
               <div>
                 <div className="flex-between" style={{ marginBottom: 12 }}>
                   <span className="badge badge-primary">{fwId}</span>
-                  <span className="badge badge-secondary" style={{ backgroundColor: '#1e293b' }}>
+                  <span className="badge badge-secondary" style={{ backgroundColor: '#0c1322' }}>
                     {fw.version}
                   </span>
                 </div>

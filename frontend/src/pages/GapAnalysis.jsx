@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchRuns, fetchRunGaps, fetchRunDetail } from '../services/api';
+import { formatTime } from '../utils/date';
 import Modal from '../components/Modal';
 import { Search, Filter, ExternalLink, ShieldCheck, AlertCircle, CheckCircle2 } from 'lucide-react';
 
@@ -15,13 +16,22 @@ export default function GapAnalysis({ currentRunId, setCurrentRunId }) {
 
   useEffect(() => {
     fetchRuns().then((data) => {
-      setRuns(data);
-      if (!selectedRunId && data.length > 0) {
-        setSelectedRunId(data[0].id);
-        setCurrentRunId(data[0].id);
+      setRuns(data || []);
+      if (data && data.length > 0) {
+        const firstId = data[0].run_id || data[0].id;
+        if (!selectedRunId) {
+          setSelectedRunId(firstId);
+          if (setCurrentRunId) setCurrentRunId(firstId);
+        }
       }
     });
   }, []);
+
+  useEffect(() => {
+    if (currentRunId && currentRunId !== selectedRunId) {
+      setSelectedRunId(currentRunId);
+    }
+  }, [currentRunId]);
 
   useEffect(() => {
     if (!selectedRunId) return;
@@ -83,19 +93,27 @@ export default function GapAnalysis({ currentRunId, setCurrentRunId }) {
           </p>
         </div>
 
-        {/* Run selector */}
-        <select
-          className="form-control"
-          style={{ width: 220 }}
-          value={selectedRunId}
-          onChange={(e) => handleSelectRun(e.target.value)}
-        >
-          {runs.map((r) => (
-            <option key={r.id} value={r.id}>
-              {r.id} ({r.domain})
-            </option>
-          ))}
-        </select>
+        {/* Run Selector */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <label style={{ fontSize: '0.82rem', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>Select Analysis:</label>
+          <select
+            className="form-control"
+            style={{ width: 'auto', minWidth: 340, maxWidth: 460, fontSize: '0.85rem' }}
+            value={selectedRunId}
+            onChange={(e) => handleSelectRun(e.target.value)}
+          >
+            {runs.map((r) => {
+              const runId = r.run_id || r.id || '';
+              const shortId = runId ? runId.replace(/^RUN-/, '') : 'UNKNOWN';
+              const time = formatTime(r.created_at);
+              return (
+                <option key={runId} value={runId}>
+                  {r.domain} — #{shortId} {time ? `(${time})` : ''}
+                </option>
+              );
+            })}
+          </select>
+        </div>
       </div>
 
       {/* Filter Tabs & Search */}

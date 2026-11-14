@@ -34,7 +34,7 @@ from typing import Optional
 from backend.config import settings, PROJECT_ROOT
 from backend.core.schemas import EvaluationMetrics, OverallEvaluation, WorkflowState
 from backend.database.db import SessionLocal
-from backend.database.models import EvaluationRecord
+from backend.database.models import EvaluationRecord, AnalysisRun
 from backend.agents.curriculum_coordinator import CurriculumCoordinator
 
 logger = logging.getLogger(__name__)
@@ -148,16 +148,27 @@ def run_full_evaluation() -> OverallEvaluation:
     db = SessionLocal()
 
     per_domain_metrics: list[EvaluationMetrics] = []
+    eval_run_ids: list[str] = []
 
     try:
         for domain_name, cfg in gt_data["domains"].items():
-            metrics, _ = evaluate_domain(
+            metrics, state = evaluate_domain(
                 coordinator=coordinator,
                 domain_name=domain_name,
                 domain_cfg=cfg,
                 db_session=db,
             )
             per_domain_metrics.append(metrics)
+            eval_run_ids.append(state.run_id)
+
+        # Clean up temporary evaluation runs from the user-facing analysis history
+        # so benchmark tests NEVER clutter the user's Recent Runs table
+        if eval_run_ids:
+            for rid in eval_run_ids:
+                run_obj = db.query(AnalysisRun).filter(AnalysisRun.id == rid).first()
+                if run_obj:
+                    db.delete(run_obj)
+            db.commit()
     finally:
         db.close()
 

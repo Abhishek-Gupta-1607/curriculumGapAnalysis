@@ -43,7 +43,8 @@ def generate_run_id() -> str:
       - Sortable by creation time.
       - Guaranteed unique across fast sub-second runs.
     """
-    now = datetime.utcnow()
+    # Use local wall-clock time so the timestamp in the run ID matches the user's local clock
+    now = datetime.now()
     return f"RUN-{now.strftime('%Y%m%d-%H%M%S')}-{uuid.uuid4().hex[:4].upper()}"
 
 

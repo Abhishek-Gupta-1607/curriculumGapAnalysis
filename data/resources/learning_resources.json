@@ -361,5 +361,280 @@
         }
       ]
     }
+  },
+  "AG-011": {
+    "name": "Multi-Agent Consensus & Debate Protocols",
+    "suggested_topic": "Modern Multi-Agent Consensus & Debate Protocols",
+    "explanation": "Provides comprehensive academic and industrial coverage of multi-agent consensus & debate protocols according to verified industry standards.",
+    "suggested_weight_percentage": 5,
+    "learning_level": "Intermediate",
+    "recommended_reading": "Official Guide and Documentation on Multi-Agent Consensus & Debate Protocols",
+    "resource_url": "https://www.acm.org/special-interest-groups/sigs/sigai",
+    "framework_citation": "Agentic AI & Multi-Agent Systems Competency Framework (AG-011)",
+    "framework_id": "AG-011"
+  },
+  "AG-012": {
+    "name": "Sandboxed Code Execution & Self-Correction",
+    "suggested_topic": "Modern Sandboxed Code Execution & Self-Correction",
+    "explanation": "Provides comprehensive academic and industrial coverage of sandboxed code execution & self-correction according to verified industry standards.",
+    "suggested_weight_percentage": 5,
+    "learning_level": "Intermediate",
+    "recommended_reading": "Official Guide and Documentation on Sandboxed Code Execution & Self-Correction",
+    "resource_url": "https://www.acm.org/special-interest-groups/sigs/sigai",
+    "framework_citation": "Agentic AI & Multi-Agent Systems Competency Framework (AG-012)",
+    "framework_id": "AG-012"
+  },
+  "AG-013": {
+    "name": "Model Context Protocol Server Architecture",
+    "suggested_topic": "Modern Model Context Protocol Server Architecture",
+    "explanation": "Provides comprehensive academic and industrial coverage of model context protocol server architecture according to verified industry standards.",
+    "suggested_weight_percentage": 10,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Model Context Protocol Server Architecture",
+    "resource_url": "https://www.acm.org/special-interest-groups/sigs/sigai",
+    "framework_citation": "Agentic AI & Multi-Agent Systems Competency Framework (AG-013)",
+    "framework_id": "AG-013"
+  },
+  "AG-014": {
+    "name": "Agentic Benchmark Evaluation",
+    "suggested_topic": "Modern Agentic Benchmark Evaluation",
+    "explanation": "Provides comprehensive academic and industrial coverage of agentic benchmark evaluation according to verified industry standards.",
+    "suggested_weight_percentage": 10,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Agentic Benchmark Evaluation",
+    "resource_url": "https://www.acm.org/special-interest-groups/sigs/sigai",
+    "framework_citation": "Agentic AI & Multi-Agent Systems Competency Framework (AG-014)",
+    "framework_id": "AG-014"
+  },
+  "AG-015": {
+    "name": "Autonomous Agent Security & Prompt Injection Defense",
+    "suggested_topic": "Modern Autonomous Agent Security & Prompt Injection Defense",
+    "explanation": "Provides comprehensive academic and industrial coverage of autonomous agent security & prompt injection defense according to verified industry standards.",
+    "suggested_weight_percentage": 15,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Autonomous Agent Security & Prompt Injection Defense",
+    "resource_url": "https://www.acm.org/special-interest-groups/sigs/sigai",
+    "framework_citation": "Agentic AI & Multi-Agent Systems Competency Framework (AG-015)",
+    "framework_id": "AG-015"
+  },
+  "CS-011": {
+    "name": "Zero Trust Architecture & Micro-segmentation",
+    "suggested_topic": "Modern Zero Trust Architecture & Micro-segmentation",
+    "explanation": "Provides comprehensive academic and industrial coverage of zero trust architecture & micro-segmentation according to verified industry standards.",
+    "suggested_weight_percentage": 5,
+    "learning_level": "Intermediate",
+    "recommended_reading": "Official Guide and Documentation on Zero Trust Architecture & Micro-segmentation",
+    "resource_url": "https://csrc.nist.gov/projects/nice-framework",
+    "framework_citation": "Cybersecurity & Information Defense Competency Framework (CS-011)",
+    "framework_id": "CS-011"
+  },
+  "CS-012": {
+    "name": "DevSecOps & Automated Security Pipeline Scanning",
+    "suggested_topic": "Modern DevSecOps & Automated Security Pipeline Scanning",
+    "explanation": "Provides comprehensive academic and industrial coverage of devsecops & automated security pipeline scanning according to verified industry standards.",
+    "suggested_weight_percentage": 5,
+    "learning_level": "Intermediate",
+    "recommended_reading": "Official Guide and Documentation on DevSecOps & Automated Security Pipeline Scanning",
+    "resource_url": "https://csrc.nist.gov/projects/nice-framework",
+    "framework_citation": "Cybersecurity & Information Defense Competency Framework (CS-012)",
+    "framework_id": "CS-012"
+  },
+  "CS-013": {
+    "name": "Threat Intelligence & MITRE ATT&CK Framework",
+    "suggested_topic": "Modern Threat Intelligence & MITRE ATT&CK Framework",
+    "explanation": "Provides comprehensive academic and industrial coverage of threat intelligence & mitre att&ck framework according to verified industry standards.",
+    "suggested_weight_percentage": 10,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Threat Intelligence & MITRE ATT&CK Framework",
+    "resource_url": "https://csrc.nist.gov/projects/nice-framework",
+    "framework_citation": "Cybersecurity & Information Defense Competency Framework (CS-013)",
+    "framework_id": "CS-013"
+  },
+  "CS-014": {
+    "name": "Secure API Architecture & OAuth 2.0 / OIDC",
+    "suggested_topic": "Modern Secure API Architecture & OAuth 2.0 / OIDC",
+    "explanation": "Provides comprehensive academic and industrial coverage of secure api architecture & oauth 2.0 / oidc according to verified industry standards.",
+    "suggested_weight_percentage": 10,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Secure API Architecture & OAuth 2.0 / OIDC",
+    "resource_url": "https://csrc.nist.gov/projects/nice-framework",
+    "framework_citation": "Cybersecurity & Information Defense Competency Framework (CS-014)",
+    "framework_id": "CS-014"
+  },
+  "CS-015": {
+    "name": "AI-Driven Cyber Threat Detection & Defense",
+    "suggested_topic": "Modern AI-Driven Cyber Threat Detection & Defense",
+    "explanation": "Provides comprehensive academic and industrial coverage of ai-driven cyber threat detection & defense according to verified industry standards.",
+    "suggested_weight_percentage": 15,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on AI-Driven Cyber Threat Detection & Defense",
+    "resource_url": "https://csrc.nist.gov/projects/nice-framework",
+    "framework_citation": "Cybersecurity & Information Defense Competency Framework (CS-015)",
+    "framework_id": "CS-015"
+  },
+  "ML-011": {
+    "name": "MLOps & Model Lifecycle Management",
+    "suggested_topic": "Modern MLOps & Model Lifecycle Management",
+    "explanation": "Provides comprehensive academic and industrial coverage of mlops & model lifecycle management according to verified industry standards.",
+    "suggested_weight_percentage": 5,
+    "learning_level": "Intermediate",
+    "recommended_reading": "Official Guide and Documentation on MLOps & Model Lifecycle Management",
+    "resource_url": "https://www.ieee.org/technical-activities/index.html",
+    "framework_citation": "Applied Machine Learning & AI Engineering Framework (ML-011)",
+    "framework_id": "ML-011"
+  },
+  "ML-012": {
+    "name": "Feature Stores & Real-Time Data Streaming",
+    "suggested_topic": "Modern Feature Stores & Real-Time Data Streaming",
+    "explanation": "Provides comprehensive academic and industrial coverage of feature stores & real-time data streaming according to verified industry standards.",
+    "suggested_weight_percentage": 5,
+    "learning_level": "Intermediate",
+    "recommended_reading": "Official Guide and Documentation on Feature Stores & Real-Time Data Streaming",
+    "resource_url": "https://www.ieee.org/technical-activities/index.html",
+    "framework_citation": "Applied Machine Learning & AI Engineering Framework (ML-012)",
+    "framework_id": "ML-012"
+  },
+  "ML-013": {
+    "name": "Explainable AI & Model Interpretability",
+    "suggested_topic": "Modern Explainable AI & Model Interpretability",
+    "explanation": "Provides comprehensive academic and industrial coverage of explainable ai & model interpretability according to verified industry standards.",
+    "suggested_weight_percentage": 10,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Explainable AI & Model Interpretability",
+    "resource_url": "https://www.ieee.org/technical-activities/index.html",
+    "framework_citation": "Applied Machine Learning & AI Engineering Framework (ML-013)",
+    "framework_id": "ML-013"
+  },
+  "ML-014": {
+    "name": "Model Monitoring & Drift Detection",
+    "suggested_topic": "Modern Model Monitoring & Drift Detection",
+    "explanation": "Provides comprehensive academic and industrial coverage of model monitoring & drift detection according to verified industry standards.",
+    "suggested_weight_percentage": 10,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Model Monitoring & Drift Detection",
+    "resource_url": "https://www.ieee.org/technical-activities/index.html",
+    "framework_citation": "Applied Machine Learning & AI Engineering Framework (ML-014)",
+    "framework_id": "ML-014"
+  },
+  "ML-015": {
+    "name": "High-Throughput Production Inference Serving",
+    "suggested_topic": "Modern High-Throughput Production Inference Serving",
+    "explanation": "Provides comprehensive academic and industrial coverage of high-throughput production inference serving according to verified industry standards.",
+    "suggested_weight_percentage": 15,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on High-Throughput Production Inference Serving",
+    "resource_url": "https://www.ieee.org/technical-activities/index.html",
+    "framework_citation": "Applied Machine Learning & AI Engineering Framework (ML-015)",
+    "framework_id": "ML-015"
+  },
+  "DL-011": {
+    "name": "Large Language Model Fine-Tuning",
+    "suggested_topic": "Modern Large Language Model Fine-Tuning",
+    "explanation": "Provides comprehensive academic and industrial coverage of large language model fine-tuning according to verified industry standards.",
+    "suggested_weight_percentage": 5,
+    "learning_level": "Intermediate",
+    "recommended_reading": "Official Guide and Documentation on Large Language Model Fine-Tuning",
+    "resource_url": "https://neurips.cc/",
+    "framework_citation": "Deep Learning & Neural Systems Competency Framework (DL-011)",
+    "framework_id": "DL-011"
+  },
+  "DL-012": {
+    "name": "Diffusion Models & Generative Sampling",
+    "suggested_topic": "Modern Diffusion Models & Generative Sampling",
+    "explanation": "Provides comprehensive academic and industrial coverage of diffusion models & generative sampling according to verified industry standards.",
+    "suggested_weight_percentage": 5,
+    "learning_level": "Intermediate",
+    "recommended_reading": "Official Guide and Documentation on Diffusion Models & Generative Sampling",
+    "resource_url": "https://neurips.cc/",
+    "framework_citation": "Deep Learning & Neural Systems Competency Framework (DL-012)",
+    "framework_id": "DL-012"
+  },
+  "DL-013": {
+    "name": "Multimodal Vector Embeddings & Contrastive Learning",
+    "suggested_topic": "Modern Multimodal Vector Embeddings & Contrastive Learning",
+    "explanation": "Provides comprehensive academic and industrial coverage of multimodal vector embeddings & contrastive learning according to verified industry standards.",
+    "suggested_weight_percentage": 10,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Multimodal Vector Embeddings & Contrastive Learning",
+    "resource_url": "https://neurips.cc/",
+    "framework_citation": "Deep Learning & Neural Systems Competency Framework (DL-013)",
+    "framework_id": "DL-013"
+  },
+  "DL-014": {
+    "name": "Model Quantization & TensorRT Inference",
+    "suggested_topic": "Modern Model Quantization & TensorRT Inference",
+    "explanation": "Provides comprehensive academic and industrial coverage of model quantization & tensorrt inference according to verified industry standards.",
+    "suggested_weight_percentage": 10,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Model Quantization & TensorRT Inference",
+    "resource_url": "https://neurips.cc/",
+    "framework_citation": "Deep Learning & Neural Systems Competency Framework (DL-014)",
+    "framework_id": "DL-014"
+  },
+  "DL-015": {
+    "name": "Reinforcement Learning from Human Feedback",
+    "suggested_topic": "Modern Reinforcement Learning from Human Feedback",
+    "explanation": "Provides comprehensive academic and industrial coverage of reinforcement learning from human feedback according to verified industry standards.",
+    "suggested_weight_percentage": 15,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Reinforcement Learning from Human Feedback",
+    "resource_url": "https://neurips.cc/",
+    "framework_citation": "Deep Learning & Neural Systems Competency Framework (DL-015)",
+    "framework_id": "DL-015"
+  },
+  "FS-011": {
+    "name": "Server-Side Rendering & Next.js Architecture",
+    "suggested_topic": "Modern Server-Side Rendering & Next.js Architecture",
+    "explanation": "Provides comprehensive academic and industrial coverage of server-side rendering & next.js architecture according to verified industry standards.",
+    "suggested_weight_percentage": 5,
+    "learning_level": "Intermediate",
+    "recommended_reading": "Official Guide and Documentation on Server-Side Rendering & Next.js Architecture",
+    "resource_url": "https://www.w3.org/standards/",
+    "framework_citation": "Full Stack Web Engineering Competency Framework (FS-011)",
+    "framework_id": "FS-011"
+  },
+  "FS-012": {
+    "name": "Real-Time Communication with WebSockets",
+    "suggested_topic": "Modern Real-Time Communication with WebSockets",
+    "explanation": "Provides comprehensive academic and industrial coverage of real-time communication with websockets according to verified industry standards.",
+    "suggested_weight_percentage": 5,
+    "learning_level": "Intermediate",
+    "recommended_reading": "Official Guide and Documentation on Real-Time Communication with WebSockets",
+    "resource_url": "https://www.w3.org/standards/",
+    "framework_citation": "Full Stack Web Engineering Competency Framework (FS-012)",
+    "framework_id": "FS-012"
+  },
+  "FS-013": {
+    "name": "Distributed In-Memory Caching with Redis",
+    "suggested_topic": "Modern Distributed In-Memory Caching with Redis",
+    "explanation": "Provides comprehensive academic and industrial coverage of distributed in-memory caching with redis according to verified industry standards.",
+    "suggested_weight_percentage": 10,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Distributed In-Memory Caching with Redis",
+    "resource_url": "https://www.w3.org/standards/",
+    "framework_citation": "Full Stack Web Engineering Competency Framework (FS-013)",
+    "framework_id": "FS-013"
+  },
+  "FS-014": {
+    "name": "GraphQL API Architecture & Apollo Client",
+    "suggested_topic": "Modern GraphQL API Architecture & Apollo Client",
+    "explanation": "Provides comprehensive academic and industrial coverage of graphql api architecture & apollo client according to verified industry standards.",
+    "suggested_weight_percentage": 10,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on GraphQL API Architecture & Apollo Client",
+    "resource_url": "https://www.w3.org/standards/",
+    "framework_citation": "Full Stack Web Engineering Competency Framework (FS-014)",
+    "framework_id": "FS-014"
+  },
+  "FS-015": {
+    "name": "Containerized Full-Stack Deployment",
+    "suggested_topic": "Modern Containerized Full-Stack Deployment",
+    "explanation": "Provides comprehensive academic and industrial coverage of containerized full-stack deployment according to verified industry standards.",
+    "suggested_weight_percentage": 15,
+    "learning_level": "Advanced",
+    "recommended_reading": "Official Guide and Documentation on Containerized Full-Stack Deployment",
+    "resource_url": "https://www.w3.org/standards/",
+    "framework_citation": "Full Stack Web Engineering Competency Framework (FS-015)",
+    "framework_id": "FS-015"
   }
 }

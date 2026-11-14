@@ -59,9 +59,15 @@ export async function runAnalysisUpload({ domain, file, coveredThreshold = 0.75,
   return res.json();
 }
 
-export async function fetchRuns(limit = 50) {
+export async function fetchRuns(limit = 100) {
   const res = await fetch(`${API_BASE}/runs?limit=${limit}`);
   if (!res.ok) throw new Error('Failed to fetch runs');
+  return res.json();
+}
+
+export async function fetchRunStats() {
+  const res = await fetch(`${API_BASE}/runs/summary/stats`);
+  if (!res.ok) throw new Error('Failed to fetch stats');
   return res.json();
 }
 
@@ -105,7 +111,10 @@ export function getJsonDownloadUrl(runId) {
 
 export async function fetchEvaluation(force = false) {
   const res = await fetch(`${API_BASE}/evaluate?force=${force}`);
-  if (!res.ok) throw new Error('Failed to run benchmark evaluation');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Failed to run benchmark evaluation' }));
+    throw new Error(err.detail || 'Failed to run benchmark evaluation');
+  }
   return res.json();
 }
 

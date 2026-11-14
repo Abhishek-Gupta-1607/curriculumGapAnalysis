@@ -58,6 +58,7 @@ def main():
             "0.0.0.0",
             "--port",
             "8000",
+            "--reload",
         ],
         cwd=str(ROOT_DIR),
     )

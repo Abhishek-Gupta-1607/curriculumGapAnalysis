@@ -1,0 +1,21 @@
+Course: Full Stack Curriculum
+Academic Level: Undergraduate / Postgraduate
+Official Evaluation: Theory (70%), Practical (30%)
+
+Unit 1: Foundations & Core Concepts (Weight: 25%)
+- Responsive UI/UX with Modern HTML5 & CSS3: Semantic markup, CSS Grid, Flexbox, media queries, mobile-first design principles, and CSS variables. (Weight: 10%)
+- Modern JavaScript & TypeScript Foundations: ES6+ syntax, asynchronous promises/async-await, DOM manipulation, static typing, and generic interfaces. (Weight: 10%)
+- Component Architecture with React.js: Functional components, custom hooks, JSX, component lifecycle, virtual DOM reconciliation, and unidirectional data flow. (Weight: 5%)
+
+Unit 2: Methods & Applied Principles (Weight: 25%)
+- Client-Side State Management: Context API, Zustand, Redux Toolkit, immutable state updates, and local storage synchronization. (Weight: 10%)
+- Backend API Development with Node.js & Express: Routing, middleware architecture, request validation, error handling middleware, and REST controller separation. (Weight: 10%)
+- Relational Database Modeling with PostgreSQL: Schema normalization (3NF), foreign keys, indexing strategies, join queries, and ACID transaction guarantees. (Weight: 5%)
+
+Unit 3: Architecture & Implementations (Weight: 25%)
+- NoSQL Document Storage with MongoDB: BSON document schemas, embedding vs referencing, aggregation pipelines, and indexing in non-relational stores. (Weight: 15%)
+- RESTful API Design & OpenAPI Documentation: HTTP status codes, resource URIs, CRUD endpoints, OpenAPI (Swagger) specifications, and API versioning. (Weight: 10%)
+
+Unit 4: Systems, Integration & Applications (Weight: 25%)
+- User Authentication with JWT & Session Cookies: JSON Web Tokens, bcrypt password hashing, HTTP-only cookie storage, refresh token rotation, and CORS configuration. (Weight: 15%)
+- Frontend Unit & Integration Testing: Unit testing with Jest, React Testing Library component assertions, mocking API calls, and code coverage. (Weight: 10%)

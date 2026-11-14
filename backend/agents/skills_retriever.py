@@ -183,10 +183,20 @@ class SkillsRetrieverAgent:
     def _normalize_domain(self, domain: str) -> Optional[str]:
         """Normalize domain input to match framework metadata."""
         d = domain.lower()
-        if "data" in d:
+        if "agent" in d or "multi-agent" in d:
+            return "Agentic AI"
+        if "cyber" in d or "security" in d or "infosec" in d:
+            return "Cybersecurity"
+        if "deep" in d or "neural" in d or "vision" in d or "nlp" in d or "llm" in d:
+            return "Deep Learning"
+        if "machine" in d or "ml" in d:
+            return "Machine Learning"
+        if "full" in d or "stack" in d:
+            return "Full Stack"
+        if "data" in d or "analytics" in d or "big data" in d:
             return "Data Science"
-        if "web" in d or "frontend" in d or "fullstack" in d:
-            return "Web Development"
-        if "cloud" in d or "devops" in d or "infra" in d:
+        if "cloud" in d or "devops" in d or "infra" in d or "sre" in d:
             return "Cloud and DevOps"
-        return None
+        if "web" in d or "frontend" in d:
+            return "Web Development"
+        return domain

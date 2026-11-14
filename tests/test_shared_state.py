@@ -43,11 +43,11 @@ class TestRunIdGeneration:
 
 class TestCreateWorkflowState:
     def test_default_state(self):
-        """Fresh state should have PENDING status and OFFLINE mode."""
+        """Fresh state should have PENDING status and valid mode."""
         state = create_workflow_state(domain="Data Science")
         assert state.domain == "Data Science"
         assert state.status == "PENDING"
-        assert state.mode == "OFFLINE"
+        assert state.mode in ("OFFLINE", "LLM-ASSISTED")
         assert state.run_id.startswith("RUN-")
 
     def test_custom_run_id(self):

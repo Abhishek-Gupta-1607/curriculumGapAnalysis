@@ -1,0 +1,21 @@
+Course: Cybersecurity Curriculum
+Academic Level: Undergraduate / Postgraduate
+Official Evaluation: Theory (70%), Practical (30%)
+
+Unit 1: Foundations & Core Concepts (Weight: 25%)
+- Information Security Fundamentals & CIA Triad: Core principles of confidentiality, integrity, availability, threat classification, and defense-in-depth. (Weight: 10%)
+- Network Security & Packet Analysis: TCP/IP protocol vulnerabilities, Wireshark packet capture, firewall configuration, and intrusion detection. (Weight: 10%)
+- Applied Cryptography & PKI Infrastructure: Symmetric/asymmetric encryption, SHA-256 hashing, digital signatures, TLS certificates, and key management. (Weight: 5%)
+
+Unit 2: Methods & Applied Principles (Weight: 25%)
+- Operating System Security & Linux Hardening: User privilege management, file system permissions, SELinux policies, SSH hardening, and kernel auditing. (Weight: 10%)
+- Identity & Access Management: Role-based access control (RBAC), multi-factor authentication (MFA), LDAP directory services, and federation. (Weight: 10%)
+- Web Application Vulnerabilities & OWASP Top 10: SQL injection, Cross-Site Scripting (XSS), CSRF, broken authentication, and security headers. (Weight: 5%)
+
+Unit 3: Architecture & Implementations (Weight: 25%)
+- Penetration Testing & Vulnerability Assessment: Methodologies for vulnerability scanning, port enumeration with Nmap, Metasploit exploitation, and reporting. (Weight: 15%)
+- Security Operations Center & SIEM Monitoring: Log collection with Splunk/ELK, event correlation rules, alert triage, and incident escalation. (Weight: 10%)
+
+Unit 4: Systems, Integration & Applications (Weight: 25%)
+- Incident Response & Digital Forensics: Evidence preservation, memory dump analysis, disk imaging with Autopsy, and timeline reconstruction. (Weight: 15%)
+- Cloud Security & Shared Responsibility Model: Securing cloud workloads, IAM policies in AWS/GCP, storage bucket access controls, and VPC isolation. (Weight: 10%)

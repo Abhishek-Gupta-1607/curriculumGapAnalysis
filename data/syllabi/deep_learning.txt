@@ -1,0 +1,21 @@
+Course: Deep Learning Curriculum
+Academic Level: Undergraduate / Postgraduate
+Official Evaluation: Theory (70%), Practical (30%)
+
+Unit 1: Foundations & Core Concepts (Weight: 25%)
+- Multi-Layer Perceptrons & Backpropagation: PyTorch autograd, forward/backward passes, activation functions (ReLU, GELU), and gradient descent. (Weight: 10%)
+- Convolutional Neural Networks: Conv2D layers, pooling, stride, padding, modern residual connections (ResNet, ConvNeXt), and receptive fields. (Weight: 10%)
+- Recurrent Neural Networks & LSTMs: Sequential dependency modeling, gated recurrent units (GRUs), long short-term memory networks, and vanishing gradients. (Weight: 5%)
+
+Unit 2: Methods & Applied Principles (Weight: 25%)
+- Optimization Algorithms & Regularization: AdamW, RMSprop, weight decay, dropout, batch normalization, layer normalization, and gradient clipping. (Weight: 10%)
+- Transfer Learning & Vision Encoders: Fine-tuning pre-trained vision models (ImageNet checkpoints), feature extraction, and progressive layer unfreezing. (Weight: 10%)
+- Generative Adversarial Networks: Generator-discriminator minimax games, Wasserstein loss, spectral normalization, and mode collapse mitigation. (Weight: 5%)
+
+Unit 3: Architecture & Implementations (Weight: 25%)
+- Sequence-to-Sequence & Attention Mechanisms: Encoder-decoder architectures, Bahdanau additive attention, Luong multiplicative attention, and alignment vectors. (Weight: 15%)
+- Transformer Architecture & Self-Attention: Multi-head self-attention, scaled dot-product attention, positional encodings, and feed-forward sublayers. (Weight: 10%)
+
+Unit 4: Systems, Integration & Applications (Weight: 25%)
+- Autoencoders & Latent Representations: Undercomplete autoencoders, variational autoencoders (VAEs), reparameterization trick, and KL divergence loss. (Weight: 15%)
+- GPU Acceleration & Distributed Basics: CUDA memory management, mixed precision training (FP16/BF16 with AMP), and basic DataParallel patterns. (Weight: 10%)

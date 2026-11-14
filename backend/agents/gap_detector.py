@@ -102,6 +102,26 @@ SYNONYM_MAP: dict[str, list[str]] = {
     "chaos engineering": ["resilience testing", "fault injection", "chaos mesh"],
     "linux": ["shell scripting", "bash", "unix", "system administration"],
     "monitoring": ["logging", "observability", "metrics", "prometheus", "grafana"],
+
+    # Agentic AI
+    "rag": ["retrieval-augmented generation", "retrieval augmented generation", "vector search"],
+    "mcp": ["model context protocol", "mcp server", "context protocol"],
+    "hitl": ["human in the loop", "human-in-the-loop", "safety guardrails"],
+    "agent": ["autonomous agent", "multi-agent", "ai agent", "decision-making loop"],
+    "multi-agent": ["agentic", "agent collaboration", "consensus protocol", "multi-agent systems"],
+
+    # Cybersecurity
+    "siem": ["security information and event management", "soc", "log monitoring"],
+    "soc": ["security operations center", "siem", "incident response"],
+    "iam": ["identity and access management", "rbac", "access control"],
+    "pki": ["public key infrastructure", "cryptography", "certificates", "tls"],
+    "owasp": ["web application security", "vulnerabilities", "top 10"],
+    "zero trust": ["micro-segmentation", "least privilege", "continuous verification"],
+
+    # Full Stack
+    "ssr": ["server-side rendering", "next.js", "server components"],
+    "websocket": ["real-time communication", "socket.io", "web sockets"],
+    "jwt": ["json web tokens", "authentication", "session cookies"],
 }
 
 

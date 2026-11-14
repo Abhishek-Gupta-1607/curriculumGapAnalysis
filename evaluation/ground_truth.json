@@ -8,11 +8,23 @@
       "framework_file": "data/frameworks/data_science_framework.pdf",
       "total_framework_competencies": 15,
       "known_covered_ids": [
-        "DS-001", "DS-002", "DS-003", "DS-004", "DS-005",
-        "DS-006", "DS-007", "DS-008", "DS-009", "DS-010"
+        "DS-001",
+        "DS-002",
+        "DS-003",
+        "DS-004",
+        "DS-005",
+        "DS-006",
+        "DS-007",
+        "DS-008",
+        "DS-009",
+        "DS-010"
       ],
       "known_missing_ids": [
-        "DS-011", "DS-012", "DS-013", "DS-014", "DS-015"
+        "DS-011",
+        "DS-012",
+        "DS-013",
+        "DS-014",
+        "DS-015"
       ],
       "known_missing_titles": {
         "DS-011": "MLOps and Model Deployment Pipelines",
@@ -27,11 +39,23 @@
       "framework_file": "data/frameworks/web_development_framework.pdf",
       "total_framework_competencies": 15,
       "known_covered_ids": [
-        "WD-001", "WD-002", "WD-003", "WD-004", "WD-005",
-        "WD-006", "WD-007", "WD-008", "WD-009", "WD-010"
+        "WD-001",
+        "WD-002",
+        "WD-003",
+        "WD-004",
+        "WD-005",
+        "WD-006",
+        "WD-007",
+        "WD-008",
+        "WD-009",
+        "WD-010"
       ],
       "known_missing_ids": [
-        "WD-011", "WD-012", "WD-013", "WD-014", "WD-015"
+        "WD-011",
+        "WD-012",
+        "WD-013",
+        "WD-014",
+        "WD-015"
       ],
       "known_missing_titles": {
         "WD-011": "Web Accessibility (WCAG 2.1 / 2.2 Standards)",
@@ -46,11 +70,23 @@
       "framework_file": "data/frameworks/cloud_devops_framework.pdf",
       "total_framework_competencies": 15,
       "known_covered_ids": [
-        "CD-001", "CD-002", "CD-003", "CD-004", "CD-005",
-        "CD-006", "CD-007", "CD-008", "CD-009", "CD-010"
+        "CD-001",
+        "CD-002",
+        "CD-003",
+        "CD-004",
+        "CD-005",
+        "CD-006",
+        "CD-007",
+        "CD-008",
+        "CD-009",
+        "CD-010"
       ],
       "known_missing_ids": [
-        "CD-011", "CD-012", "CD-013", "CD-014", "CD-015"
+        "CD-011",
+        "CD-012",
+        "CD-013",
+        "CD-014",
+        "CD-015"
       ],
       "known_missing_titles": {
         "CD-011": "Kubernetes and Container Orchestration",
@@ -60,5 +96,200 @@
         "CD-015": "Cloud Financial Management and FinOps"
       }
     }
+  },
+  "Agentic AI": {
+    "known_gaps": [
+      {
+        "competency_id": "AG-011",
+        "name": "Multi-Agent Consensus & Debate Protocols",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 5
+      },
+      {
+        "competency_id": "AG-012",
+        "name": "Sandboxed Code Execution & Self-Correction",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 5
+      },
+      {
+        "competency_id": "AG-013",
+        "name": "Model Context Protocol Server Architecture",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 10
+      },
+      {
+        "competency_id": "AG-014",
+        "name": "Agentic Benchmark Evaluation",
+        "expected_status": "MISSING",
+        "learning_level": "Advanced",
+        "recommended_weight_percentage": 10
+      },
+      {
+        "competency_id": "AG-015",
+        "name": "Autonomous Agent Security & Prompt Injection Defense",
+        "expected_status": "MISSING",
+        "learning_level": "Advanced",
+        "recommended_weight_percentage": 15
+      }
+    ]
+  },
+  "Cybersecurity": {
+    "known_gaps": [
+      {
+        "competency_id": "CS-011",
+        "name": "Zero Trust Architecture & Micro-segmentation",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 5
+      },
+      {
+        "competency_id": "CS-012",
+        "name": "DevSecOps & Automated Security Pipeline Scanning",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 5
+      },
+      {
+        "competency_id": "CS-013",
+        "name": "Threat Intelligence & MITRE ATT&CK Framework",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 10
+      },
+      {
+        "competency_id": "CS-014",
+        "name": "Secure API Architecture & OAuth 2.0 / OIDC",
+        "expected_status": "MISSING",
+        "learning_level": "Advanced",
+        "recommended_weight_percentage": 10
+      },
+      {
+        "competency_id": "CS-015",
+        "name": "AI-Driven Cyber Threat Detection & Defense",
+        "expected_status": "MISSING",
+        "learning_level": "Advanced",
+        "recommended_weight_percentage": 15
+      }
+    ]
+  },
+  "Machine Learning": {
+    "known_gaps": [
+      {
+        "competency_id": "ML-011",
+        "name": "MLOps & Model Lifecycle Management",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 5
+      },
+      {
+        "competency_id": "ML-012",
+        "name": "Feature Stores & Real-Time Data Streaming",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 5
+      },
+      {
+        "competency_id": "ML-013",
+        "name": "Explainable AI & Model Interpretability",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 10
+      },
+      {
+        "competency_id": "ML-014",
+        "name": "Model Monitoring & Drift Detection",
+        "expected_status": "MISSING",
+        "learning_level": "Advanced",
+        "recommended_weight_percentage": 10
+      },
+      {
+        "competency_id": "ML-015",
+        "name": "High-Throughput Production Inference Serving",
+        "expected_status": "MISSING",
+        "learning_level": "Advanced",
+        "recommended_weight_percentage": 15
+      }
+    ]
+  },
+  "Deep Learning": {
+    "known_gaps": [
+      {
+        "competency_id": "DL-011",
+        "name": "Large Language Model Fine-Tuning",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 5
+      },
+      {
+        "competency_id": "DL-012",
+        "name": "Diffusion Models & Generative Sampling",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 5
+      },
+      {
+        "competency_id": "DL-013",
+        "name": "Multimodal Vector Embeddings & Contrastive Learning",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 10
+      },
+      {
+        "competency_id": "DL-014",
+        "name": "Model Quantization & TensorRT Inference",
+        "expected_status": "MISSING",
+        "learning_level": "Advanced",
+        "recommended_weight_percentage": 10
+      },
+      {
+        "competency_id": "DL-015",
+        "name": "Reinforcement Learning from Human Feedback",
+        "expected_status": "MISSING",
+        "learning_level": "Advanced",
+        "recommended_weight_percentage": 15
+      }
+    ]
+  },
+  "Full Stack": {
+    "known_gaps": [
+      {
+        "competency_id": "FS-011",
+        "name": "Server-Side Rendering & Next.js Architecture",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 5
+      },
+      {
+        "competency_id": "FS-012",
+        "name": "Real-Time Communication with WebSockets",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 5
+      },
+      {
+        "competency_id": "FS-013",
+        "name": "Distributed In-Memory Caching with Redis",
+        "expected_status": "MISSING",
+        "learning_level": "Intermediate",
+        "recommended_weight_percentage": 10
+      },
+      {
+        "competency_id": "FS-014",
+        "name": "GraphQL API Architecture & Apollo Client",
+        "expected_status": "MISSING",
+        "learning_level": "Advanced",
+        "recommended_weight_percentage": 10
+      },
+      {
+        "competency_id": "FS-015",
+        "name": "Containerized Full-Stack Deployment",
+        "expected_status": "MISSING",
+        "learning_level": "Advanced",
+        "recommended_weight_percentage": 15
+      }
+    ]
   }
 }

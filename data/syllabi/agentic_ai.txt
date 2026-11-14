@@ -1,0 +1,21 @@
+Course: Agentic AI Curriculum
+Academic Level: Undergraduate / Postgraduate
+Official Evaluation: Theory (70%), Practical (30%)
+
+Unit 1: Foundations & Core Concepts (Weight: 25%)
+- Foundations of Autonomous AI Agents: Understanding autonomous decision-making loops, perception-action cycles, reactive vs deliberative architectures. (Weight: 10%)
+- Prompt Engineering & Structured Tool Calling: Techniques for deterministic schema generation, function calling protocols, and constrained output formatting. (Weight: 10%)
+- Retrieval-Augmented Generation Architecture: Implementing dense vector retrieval, hybrid sparse-dense search, chunking strategies, and context window optimization. (Weight: 5%)
+
+Unit 2: Methods & Applied Principles (Weight: 25%)
+- Agent Memory & Conversation State Management: Short-term conversational buffers, long-term episodic memory, semantic summary caching, and state serialization. (Weight: 10%)
+- Planning, Reasoning & Chain-of-Thought: Tree-of-Thoughts, Plan-and-Solve strategies, ReAct prompting, and iterative subgoal decomposition. (Weight: 10%)
+- Multi-Agent Collaboration & Message Passing: Role-based agent hierarchies, peer-to-peer message protocols, sequential orchestration, and team coordination. (Weight: 5%)
+
+Unit 3: Architecture & Implementations (Weight: 25%)
+- Agent Workflows & State Graph Orchestration: Deterministic workflow graphs, conditional state branching, checkpointing, and cyclic execution flows. (Weight: 15%)
+- Human-in-the-Loop & Safety Guardrails: Human approval interrupts, policy validation engines, prompt safety filters, and execution boundaries. (Weight: 10%)
+
+Unit 4: Systems, Integration & Applications (Weight: 25%)
+- Tool & API Integration Protocols: External REST API connectors, filesystem sandboxing, database client execution, and dynamic plugin discovery. (Weight: 15%)
+- Agent Observability & Execution Tracing: Logging token consumption, step-by-step latency tracking, OpenTelemetry tracing, and intermediate inspection. (Weight: 10%)

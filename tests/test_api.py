@@ -30,15 +30,17 @@ class TestAPIEndpoints:
         assert data["database"] == "connected"
 
     def test_list_samples(self):
-        """Samples endpoint should return 3 built-in sample syllabi."""
+        """Samples endpoint should return built-in sample syllabi."""
         response = client.get("/api/samples")
         assert response.status_code == 200
         samples = response.json()
-        assert len(samples) == 3
+        assert len(samples) >= 3
         domains = [s["domain"] for s in samples]
         assert "Data Science" in domains
         assert "Web Development" in domains
         assert "Cloud and DevOps" in domains
+        assert "Agentic AI" in domains
+        assert "Cybersecurity" in domains
 
     def test_list_runs(self):
         """Runs endpoint should return historical runs list."""

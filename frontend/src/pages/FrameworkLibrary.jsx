@@ -143,49 +143,52 @@ export default function FrameworkLibrary() {
 
       {/* Frameworks Cards */}
       <div className="grid-3">
-        {frameworksList.map((fw) => (
-          <div key={fw.framework_id} className="card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <div>
-              <div className="flex-between" style={{ marginBottom: 12 }}>
-                <span className="badge badge-primary">{fw.framework_id}</span>
-                <span className="badge badge-secondary" style={{ backgroundColor: '#1e293b' }}>
-                  {fw.version}
-                </span>
+        {frameworksList.map((fw, idx) => {
+          const fwId = fw.id || fw.framework_id || `FW-00${idx + 1}`;
+          return (
+            <div key={fwId} className="card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <div>
+                <div className="flex-between" style={{ marginBottom: 12 }}>
+                  <span className="badge badge-primary">{fwId}</span>
+                  <span className="badge badge-secondary" style={{ backgroundColor: '#1e293b' }}>
+                    {fw.version}
+                  </span>
+                </div>
+
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: 8 }}>
+                  {fw.name}
+                </h3>
+
+                <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: 16 }}>
+                  <strong>Publisher:</strong> {fw.publisher}
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: '0.8rem', marginBottom: 16 }}>
+                  <div className="flex-between">
+                    <span style={{ color: 'var(--text-dim)' }}>License:</span>
+                    <span style={{ color: 'var(--text-main)', fontWeight: 500 }}>{fw.license}</span>
+                  </div>
+                  <div className="flex-between">
+                    <span style={{ color: 'var(--text-dim)' }}>Competencies:</span>
+                    <span style={{ color: '#10b981', fontWeight: 600 }}>{fw.chunk_count || fw.competencies_count || 15} verified</span>
+                  </div>
+                </div>
               </div>
 
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: 8 }}>
-                {fw.name}
-              </h3>
-
-              <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: 16 }}>
-                <strong>Publisher:</strong> {fw.publisher}
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: '0.8rem', marginBottom: 16 }}>
-                <div className="flex-between">
-                  <span style={{ color: 'var(--text-dim)' }}>License:</span>
-                  <span style={{ color: 'var(--text-main)', fontWeight: 500 }}>{fw.license}</span>
-                </div>
-                <div className="flex-between">
-                  <span style={{ color: 'var(--text-dim)' }}>Competencies:</span>
-                  <span style={{ color: '#10b981', fontWeight: 600 }}>{fw.competencies_count} verified</span>
-                </div>
+              <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: 12 }}>
+                <a
+                  href={fw.source_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ fontSize: '0.8rem', color: '#6366f1', display: 'flex', alignItems: 'center', gap: 6 }}
+                >
+                  <span>View Official Source</span>
+                  <ExternalLink size={12} />
+                </a>
               </div>
             </div>
-
-            <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: 12 }}>
-              <a
-                href={fw.source_url}
-                target="_blank"
-                rel="noreferrer"
-                style={{ fontSize: '0.8rem', color: '#6366f1', display: 'flex', alignItems: 'center', gap: 6 }}
-              >
-                <span>View Official Source</span>
-                <ExternalLink size={12} />
-              </a>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

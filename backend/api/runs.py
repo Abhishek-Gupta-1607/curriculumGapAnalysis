@@ -5,6 +5,7 @@ API endpoints for querying historical runs, real-time agent execution traces,
 coverage matrices, and reviewer results.
 """
 
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -23,6 +24,18 @@ def list_runs(limit: int = 50, db: Session = Depends(get_db)):
     """
     Returns list of historical analysis runs.
     """
+    # Auto-resolve any stale runs stuck in RUNNING from past crashed sessions
+    cutoff = datetime.utcnow() - timedelta(minutes=2)
+    stale_runs = (
+        db.query(AnalysisRun)
+        .filter(AnalysisRun.status == "RUNNING", AnalysisRun.created_at < cutoff)
+        .all()
+    )
+    for sr in stale_runs:
+        sr.status = "COMPLETED" if sr.shared_state_json else "FAILED"
+    if stale_runs:
+        db.commit()
+
     runs = (
         db.query(AnalysisRun)
         .order_by(AnalysisRun.created_at.desc())
@@ -42,19 +55,65 @@ def list_runs(limit: int = 50, db: Session = Depends(get_db)):
             except Exception:
                 pass
 
+        created_at_utc = r.created_at
+        if created_at_utc and created_at_utc.tzinfo is None:
+            created_at_utc = created_at_utc.replace(tzinfo=timezone.utc)
+
+        completed_at_utc = r.completed_at
+        if completed_at_utc and completed_at_utc.tzinfo is None:
+            completed_at_utc = completed_at_utc.replace(tzinfo=timezone.utc)
+
         summaries.append(
             RunSummary(
                 run_id=r.id,
                 domain=r.domain,
                 status=r.status,
                 mode=r.mode,
-                created_at=r.created_at,
-                completed_at=r.completed_at,
+                created_at=created_at_utc,
+                completed_at=completed_at_utc,
                 total_gaps=gaps_count,
                 approved_recommendations=app_recs,
             )
         )
     return summaries
+
+
+@router.get("/summary/stats")
+def get_runs_stats(db: Session = Depends(get_db)):
+    """
+    Returns high-level aggregate statistics across all runs in the database.
+    """
+    # Auto-resolve any stale runs stuck in RUNNING from past crashed sessions
+    cutoff = datetime.utcnow() - timedelta(minutes=2)
+    stale_runs = (
+        db.query(AnalysisRun)
+        .filter(AnalysisRun.status == "RUNNING", AnalysisRun.created_at < cutoff)
+        .all()
+    )
+    for sr in stale_runs:
+        sr.status = "COMPLETED" if sr.shared_state_json else "FAILED"
+    if stale_runs:
+        db.commit()
+
+    total_runs = db.query(AnalysisRun).count()
+    completed_runs = db.query(AnalysisRun).filter(AnalysisRun.status == "COMPLETED").count()
+    runs = db.query(AnalysisRun).all()
+    total_gaps = 0
+    total_recs = 0
+    for r in runs:
+        if r.shared_state_json:
+            try:
+                st = state_from_json(r.shared_state_json)
+                total_gaps += len(st.gaps)
+                total_recs += len(st.approved_recommendations)
+            except Exception:
+                pass
+    return {
+        "total_runs": total_runs,
+        "completed_runs": completed_runs,
+        "total_gaps": total_gaps,
+        "total_approved_recommendations": total_recs,
+    }
 
 
 @router.get("/{run_id}")

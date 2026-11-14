@@ -43,8 +43,8 @@ echo "   - Backend REST API:     http://localhost:8000"
 echo "   - Interactive Swagger:  http://localhost:8000/docs"
 echo "========================================================================"
 echo ""
-echo "[*] Starting FastAPI Backend on port 8000..."
-./venv/bin/uvicorn backend.main:app --host 0.0.0.0 --port 8000 &
+echo "[*] Starting FastAPI Backend on port 8000 (with auto-reload)..."
+./venv/bin/uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload &
 BACKEND_PID=$!
 
 echo "[*] Starting Vite Frontend on port 5173..."

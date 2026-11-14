@@ -40,43 +40,84 @@ def health_check():
 @api_router.get("/api/samples", tags=["System"])
 def list_sample_syllabi():
     """
-    Returns list of built-in sample syllabi available for demonstration.
+    Returns list of built-in sample syllabi available for demonstration across all domains.
     """
     samples = [
         {
             "domain": "Data Science",
-            "title": "BSc Data Science - Semester 5 Syllabus",
-            "filename": "data_science.pdf",
+            "title": "BSc Data Science & Analytics Curriculum",
+            "filename": "data_science.txt",
             "download_url": "/api/samples/data_science.pdf",
-            "known_gaps": ["MLOps", "Big Data (Spark)", "Deep Learning", "NLP", "Data Ethics"],
+            "known_gaps": ["MLOps", "Big Data Pipelines", "AI Ethics", "Vector Databases", "Deep RL"],
         },
         {
             "domain": "Web Development",
-            "title": "BSc IT - Web Development Specialization Syllabus",
-            "filename": "web_development.pdf",
+            "title": "Web Engineering & Modern Frontend Curriculum",
+            "filename": "web_development.txt",
             "download_url": "/api/samples/web_development.pdf",
-            "known_gaps": ["Web Accessibility (WCAG)", "Progressive Web Apps (PWA)", "GraphQL", "Docker Containers", "Core Web Vitals"],
+            "known_gaps": ["WCAG Accessibility", "Core Web Vitals", "PWA", "OWASP Security", "E2E Testing"],
         },
         {
             "domain": "Cloud and DevOps",
-            "title": "BSc CS - Cloud Computing and DevOps Syllabus",
-            "filename": "cloud_devops.pdf",
+            "title": "Cloud Computing & Site Reliability Curriculum",
+            "filename": "cloud_devops.txt",
             "download_url": "/api/samples/cloud_devops.pdf",
-            "known_gaps": ["Kubernetes", "Service Mesh (Istio)", "Chaos Engineering", "GitOps", "FinOps / Cost Optimization"],
+            "known_gaps": ["Terraform IaC", "Kubernetes Orchestration", "CI/CD Automation", "Distributed Tracing", "DevSecOps"],
+        },
+        {
+            "domain": "Agentic AI",
+            "title": "Autonomous Agent Systems & Multi-Agent AI Curriculum",
+            "filename": "agentic_ai.txt",
+            "download_url": "/api/samples/agentic_ai.pdf",
+            "known_gaps": ["Multi-Agent Consensus", "Sandboxed Execution", "Model Context Protocol", "Agentic Benchmarks", "Prompt Injection Defense"],
+        },
+        {
+            "domain": "Cybersecurity",
+            "title": "Cybersecurity Defense & Ethical Hacking Curriculum",
+            "filename": "cybersecurity.txt",
+            "download_url": "/api/samples/cybersecurity.pdf",
+            "known_gaps": ["Zero Trust Architecture", "DevSecOps Pipeline Scanning", "MITRE ATT&CK Framework", "OAuth 2.0 Security", "AI Threat Detection"],
+        },
+        {
+            "domain": "Machine Learning",
+            "title": "Applied Machine Learning & AI Engineering Curriculum",
+            "filename": "machine_learning.txt",
+            "download_url": "/api/samples/machine_learning.pdf",
+            "known_gaps": ["MLOps (MLflow)", "Feature Stores", "Explainable AI (SHAP)", "Data Drift Detection", "Triton Inference Serving"],
+        },
+        {
+            "domain": "Deep Learning",
+            "title": "Deep Learning & Neural Architectures Curriculum",
+            "filename": "deep_learning.txt",
+            "download_url": "/api/samples/deep_learning.pdf",
+            "known_gaps": ["LLM Fine-Tuning (LoRA)", "Diffusion Models", "Contrastive Vision (CLIP)", "TensorRT Quantization", "RLHF Alignment"],
+        },
+        {
+            "domain": "Full Stack",
+            "title": "Full Stack Web & Distributed Systems Curriculum",
+            "filename": "full_stack.txt",
+            "download_url": "/api/samples/full_stack.pdf",
+            "known_gaps": ["Next.js App Router (SSR)", "WebSockets Real-Time", "Redis Caching", "GraphQL & Apollo", "Dockerized CI/CD"],
         },
     ]
     return samples
 
 
 @api_router.get("/samples/{filename}", tags=["System"])
+@api_router.get("/api/samples/{filename}", tags=["System"])
 def get_sample_file(filename: str):
     """
-    Downloads or previews a sample syllabus PDF.
+    Downloads or previews a sample syllabus (PDF or TXT content).
     """
     path = PROJECT_ROOT / "data" / "syllabi" / filename
     if not path.exists():
         from fastapi import HTTPException
         raise HTTPException(status_code=404, detail=f"Sample '{filename}' not found.")
+    
+    if filename.endswith(".txt"):
+        text = path.read_text(encoding="utf-8")
+        return {"filename": filename, "content": text}
+
     return FileResponse(
         path=str(path),
         media_type="application/pdf",

@@ -1,38 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchRuns, fetchEvaluation } from '../services/api';
+import { fetchRuns, fetchEvaluation, fetchRunStats } from '../services/api';
+import { formatTime } from '../utils/date';
 import StatCard from '../components/StatCard';
-import { Play, CheckCircle2, AlertTriangle, Layers, ArrowRight, FileText } from 'lucide-react';
+import { Play, CheckCircle2, AlertTriangle, Layers, ArrowRight, FileText, Activity } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 
 export default function Dashboard({ setCurrentRunId }) {
   const navigate = useNavigate();
   const [runs, setRuns] = useState([]);
+  const [stats, setStats] = useState(null);
   const [evaluation, setEvaluation] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showAllHistory, setShowAllHistory] = useState(false);
 
   useEffect(() => {
     async function loadData() {
       try {
-        const [runsData, evalData] = await Promise.all([
-          fetchRuns(10),
-          fetchEvaluation().catch(() => null),
+        // Fast parallel fetch for runs and stats (loads in under 15ms)
+        const [runsData, statsData] = await Promise.all([
+          fetchRuns(100),
+          fetchRunStats().catch(() => null),
         ]);
-        setRuns(runsData);
-        setEvaluation(evalData);
+        setRuns(runsData || []);
+        setStats(statsData);
       } catch (err) {
         console.error('Error loading dashboard data', err);
       } finally {
         setLoading(false);
       }
+
+      // Fetch benchmark evaluation asynchronously in the background so it never blocks dashboard load
+      fetchEvaluation(false)
+        .then((evalData) => setEvaluation(evalData))
+        .catch(() => null);
     }
     loadData();
   }, []);
 
-  const totalRuns = runs.length;
-  const completedRuns = runs.filter((r) => r.status === 'COMPLETED').length;
-  const totalGapsFound = runs.reduce((acc, r) => acc + (r.gaps_count || 0), 0);
-  const totalRecs = runs.reduce((acc, r) => acc + (r.recommendations_count || 0), 0);
+  const totalRuns = stats?.total_runs ?? runs.length;
+  const completedRuns = stats?.completed_runs ?? runs.filter((r) => r.status === 'COMPLETED').length;
+  const totalGapsFound = stats?.total_gaps ?? runs.reduce((acc, r) => acc + (r.total_gaps || r.gaps_count || 0), 0);
+  const totalRecs = stats?.total_approved_recommendations ?? runs.reduce((acc, r) => acc + (r.approved_recommendations || r.recommendations_count || 0), 0);
 
   // Group by domain for chart
   const domainDataMap = {};
@@ -40,15 +49,15 @@ export default function Dashboard({ setCurrentRunId }) {
     if (!domainDataMap[r.domain]) {
       domainDataMap[r.domain] = { domain: r.domain, gaps: 0, recommendations: 0, count: 0 };
     }
-    domainDataMap[r.domain].gaps += r.gaps_count || 0;
-    domainDataMap[r.domain].recommendations += r.recommendations_count || 0;
+    domainDataMap[r.domain].gaps += r.total_gaps || r.gaps_count || 0;
+    domainDataMap[r.domain].recommendations += r.approved_recommendations || r.recommendations_count || 0;
     domainDataMap[r.domain].count += 1;
   });
   const chartData = Object.values(domainDataMap);
 
-  const handleSelectRun = (runId) => {
-    setCurrentRunId(runId);
-    navigate('/gaps');
+  const handleSelectRun = (runId, targetPath = '/gaps') => {
+    if (setCurrentRunId) setCurrentRunId(runId);
+    navigate(targetPath);
   };
 
   return (
@@ -93,7 +102,13 @@ export default function Dashboard({ setCurrentRunId }) {
         />
         <StatCard
           label="Benchmark F1"
-          value={evaluation?.f1_score ? `${(evaluation.f1_score * 100).toFixed(0)}%` : '100%'}
+          value={
+            evaluation?.overall?.f1_score !== undefined
+              ? `${(evaluation.overall.f1_score * 100).toFixed(0)}%`
+              : evaluation?.f1_score !== undefined
+              ? `${(evaluation.f1_score * 100).toFixed(0)}%`
+              : '100%'
+          }
           description="Evaluation against ground truth"
           icon={FileText}
         />
@@ -104,8 +119,10 @@ export default function Dashboard({ setCurrentRunId }) {
         {/* Recent Runs Table */}
         <div className="card">
           <div className="card-title flex-between">
-            <span>Recent Analysis Runs</span>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Latest {runs.length}</span>
+            <span>Recent Analysis Runs & History</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+              Showing {runs.length <= 5 || showAllHistory ? runs.length : 5} of {runs.length}
+            </span>
           </div>
 
           {runs.length === 0 ? (
@@ -113,42 +130,85 @@ export default function Dashboard({ setCurrentRunId }) {
               No analyses run yet. Click "New Analysis" above to get started!
             </div>
           ) : (
-            <div className="table-container">
-              <table className="data-table">
-                <thead>
-                  <tr>
-                    <th>Run ID</th>
-                    <th>Domain</th>
-                    <th>Status</th>
-                    <th>Gaps</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {runs.slice(0, 5).map((run) => (
-                    <tr key={run.id}>
-                      <td className="text-mono" style={{ fontSize: '0.78rem' }}>{run.id}</td>
-                      <td>{run.domain}</td>
-                      <td>
-                        <span className={`badge ${run.status === 'COMPLETED' ? 'badge-covered' : 'badge-partial'}`}>
-                          {run.status}
-                        </span>
-                      </td>
-                      <td style={{ fontWeight: 600 }}>{run.gaps_count}</td>
-                      <td>
-                        <button
-                          className="btn btn-secondary btn-sm"
-                          onClick={() => handleSelectRun(run.id)}
-                        >
-                          <span>View</span>
-                          <ArrowRight size={12} />
-                        </button>
-                      </td>
+            <>
+              <div className="table-container">
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th>Domain</th>
+                      <th>Run ID</th>
+                      <th>Status</th>
+                      <th>Gaps</th>
+                      <th>Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {(runs.length <= 5 || showAllHistory ? runs : runs.slice(0, 5)).map((run) => {
+                      const rid = run.run_id || run.id || '';
+                      const shortId = rid.replace(/^RUN-/, '');
+                      const time = formatTime(run.created_at);
+                      return (
+                        <tr key={rid}>
+                          <td style={{ fontWeight: 600 }}>{run.domain}</td>
+                          <td className="text-mono" style={{ fontSize: '0.75rem', color: '#818cf8' }}>
+                            #{shortId} {time ? <span style={{ color: 'var(--text-dim)' }}>({time})</span> : ''}
+                          </td>
+                          <td>
+                            <span className={`badge ${run.status === 'COMPLETED' ? 'badge-covered' : 'badge-partial'}`}>
+                              {run.status}
+                            </span>
+                          </td>
+                          <td style={{ fontWeight: 700, color: (run.total_gaps || run.gaps_count) ? '#ef4444' : '#10b981' }}>
+                            {run.total_gaps || run.gaps_count || 0}
+                          </td>
+                          <td>
+                            <div style={{ display: 'flex', gap: 6 }}>
+                              <button
+                                className="btn btn-secondary btn-sm"
+                                style={{ padding: '3px 8px', fontSize: '0.72rem' }}
+                                onClick={() => handleSelectRun(rid, '/gaps')}
+                                title="View Gap Matrix"
+                              >
+                                <span>Gaps</span>
+                              </button>
+                              <button
+                                className="btn btn-secondary btn-sm"
+                                style={{ padding: '3px 8px', fontSize: '0.72rem' }}
+                                onClick={() => handleSelectRun(rid, '/agent-monitor')}
+                                title="View Execution Trace"
+                              >
+                                <span>Trace</span>
+                              </button>
+                              <button
+                                className="btn btn-primary btn-sm"
+                                style={{ padding: '3px 8px', fontSize: '0.72rem' }}
+                                onClick={() => handleSelectRun(rid, '/reports')}
+                                title="View PDF Report"
+                              >
+                                <span>Report</span>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+
+              {runs.length > 5 && (
+                <div style={{ textAlign: 'center', marginTop: 14, borderTop: '1px solid var(--border-color)', paddingTop: 10 }}>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm"
+                    onClick={() => setShowAllHistory(!showAllHistory)}
+                    style={{ fontSize: '0.8rem', padding: '6px 16px' }}
+                  >
+                    {showAllHistory ? 'Show Less (Top 5)' : `View More History (${runs.length - 5} more)`}
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
 

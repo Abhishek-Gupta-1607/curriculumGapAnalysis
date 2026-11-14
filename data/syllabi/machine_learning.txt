@@ -1,0 +1,21 @@
+Course: Machine Learning Curriculum
+Academic Level: Undergraduate / Postgraduate
+Official Evaluation: Theory (70%), Practical (30%)
+
+Unit 1: Foundations & Core Concepts (Weight: 25%)
+- Supervised Learning Algorithms: Linear regression, logistic regression, support vector machines, k-nearest neighbors, and decision trees. (Weight: 10%)
+- Unsupervised Learning & Clustering: K-Means clustering, hierarchical clustering, DBSCAN, and principal component analysis (PCA). (Weight: 10%)
+- Feature Engineering & Data Preprocessing: One-hot encoding, imputation strategies, standard scaling, polynomial features, and target encoding. (Weight: 5%)
+
+Unit 2: Methods & Applied Principles (Weight: 25%)
+- Model Validation & Cross-Validation Techniques: K-fold cross-validation, stratified sampling, ROC-AUC curves, precision-recall trade-offs, and confusion matrices. (Weight: 10%)
+- Ensemble Methods & Random Forests: Bagging algorithms, random forest classifiers/regressors, out-of-bag error estimation, and feature importances. (Weight: 10%)
+- Gradient Boosting Frameworks: Gradient boosting machines, XGBoost, LightGBM, and CatBoost algorithms with loss optimization. (Weight: 5%)
+
+Unit 3: Architecture & Implementations (Weight: 25%)
+- Hyperparameter Optimization: Grid search, randomized search, Bayesian optimization using Optuna, and learning rate scheduling. (Weight: 15%)
+- Imbalanced Classification & Sampling: SMOTE, near-miss undersampling, cost-sensitive learning, and focal loss techniques for rare events. (Weight: 10%)
+
+Unit 4: Systems, Integration & Applications (Weight: 25%)
+- Text Representation & TF-IDF Pipelines: Tokenization, stopword removal, n-gram vectorization, TF-IDF scoring, and Naive Bayes text classification. (Weight: 15%)
+- Computer Vision Foundations: Image filtering, edge detection with Sobel/Canny, morphological transformations, and OpenCV pipelines. (Weight: 10%)

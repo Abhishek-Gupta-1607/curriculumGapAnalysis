@@ -3,6 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { runAnalysisText, runAnalysisUpload, fetchSamples, fetchSampleContent } from '../services/api';
 import { UploadCloud, FileText, Settings, Play, CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react';
 
+const PIPELINE_STEPS = [
+  { num: 1, name: 'Syllabus Parser', desc: 'Extracting course topics, units, and official weights via PyMuPDF...' },
+  { num: 2, name: 'Skills Retriever', desc: 'Querying ChromaDB local vector store for authentic industry standards...' },
+  { num: 3, name: 'Gap Detector', desc: 'Computing Cosine Similarity & classifying COVERED / PARTIAL / MISSING...' },
+  { num: 4, name: 'Resource Recommender', desc: 'Formulating syllabus weight adjustments & verified open-access resources...' },
+  { num: 5, name: 'Reviewer Guardrail', desc: 'Deterministic zero-hallucination audit checking citations and licenses...' },
+  { num: 6, name: 'Curriculum Coordinator', desc: 'Compiling state serialization & synthesizing ReportLab PDF report...' },
+];
+
 export default function NewAnalysis({ setCurrentRunId }) {
   const navigate = useNavigate();
   const [domain, setDomain] = useState('Data Science');
@@ -14,6 +23,20 @@ export default function NewAnalysis({ setCurrentRunId }) {
   const [samples, setSamples] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [pipelineStep, setPipelineStep] = useState(1);
+
+  useEffect(() => {
+    let timer;
+    if (loading) {
+      setPipelineStep(1);
+      timer = setInterval(() => {
+        setPipelineStep((prev) => (prev < 6 ? prev + 1 : 6));
+      }, 1200);
+    } else {
+      setPipelineStep(1);
+    }
+    return () => clearInterval(timer);
+  }, [loading]);
 
   useEffect(() => {
     fetchSamples()
@@ -27,7 +50,12 @@ export default function NewAnalysis({ setCurrentRunId }) {
       setError(null);
       const data = await fetchSampleContent(sampleName);
       setSyllabusText(data.content);
-      if (sampleName.includes('data_science')) setDomain('Data Science');
+      if (sampleName.includes('agentic')) setDomain('Agentic AI');
+      else if (sampleName.includes('cyber')) setDomain('Cybersecurity');
+      else if (sampleName.includes('machine')) setDomain('Machine Learning');
+      else if (sampleName.includes('deep')) setDomain('Deep Learning');
+      else if (sampleName.includes('full_stack')) setDomain('Full Stack');
+      else if (sampleName.includes('data_science')) setDomain('Data Science');
       else if (sampleName.includes('web_development')) setDomain('Web Development');
       else if (sampleName.includes('cloud')) setDomain('Cloud and DevOps');
       setInputMode('text');
@@ -67,8 +95,8 @@ export default function NewAnalysis({ setCurrentRunId }) {
         });
       }
 
-      setCurrentRunId(result.run_id);
-      navigate(`/agent-monitor?runId=${result.run_id}`);
+      if (setCurrentRunId) setCurrentRunId(result.run_id);
+      navigate(`/agent-monitor?runId=${result.run_id}&animate=true`);
     } catch (err) {
       setError(err.message);
       setLoading(false);
@@ -101,9 +129,14 @@ export default function NewAnalysis({ setCurrentRunId }) {
               value={domain}
               onChange={(e) => setDomain(e.target.value)}
             >
-              <option value="Data Science">Data Science (NIST NICE & ACM CS2023)</option>
-              <option value="Web Development">Web Development (ESCO & W3C)</option>
-              <option value="Cloud and DevOps">Cloud and DevOps (NIST Cloud Computing)</option>
+              <option value="Agentic AI">Agentic AI & Multi-Agent Systems (ACM SIGAI)</option>
+              <option value="Cybersecurity">Cybersecurity & Ethical Hacking (NIST NICE)</option>
+              <option value="Machine Learning">Machine Learning & AI/ML (IEEE & ACM)</option>
+              <option value="Deep Learning">Deep Learning & Neural Systems (NeurIPS)</option>
+              <option value="Full Stack">Full Stack Web Engineering (W3C & ESCO)</option>
+              <option value="Data Science">Data Science & Analytics (NIST & ESCO)</option>
+              <option value="Web Development">Web Development & Frontend (W3C Standards)</option>
+              <option value="Cloud and DevOps">Cloud Computing & DevOps (NIST SP 500)</option>
             </select>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: 8 }}>
               Maps to genuine ChromaDB vector collections with verified industry competencies.
@@ -148,27 +181,62 @@ export default function NewAnalysis({ setCurrentRunId }) {
           {/* Sample Preloaders */}
           <div className="card">
             <label className="form-label">3. Quick-Load Benchmark Sample</label>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 6 }}>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={() => handleLoadSample('agentic_ai.txt')}
+              >
+                Agentic AI
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={() => handleLoadSample('cybersecurity.txt')}
+              >
+                Cybersecurity
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={() => handleLoadSample('machine_learning.txt')}
+              >
+                Machine Learning
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={() => handleLoadSample('deep_learning.txt')}
+              >
+                Deep Learning
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={() => handleLoadSample('full_stack.txt')}
+              >
+                Full Stack Web
+              </button>
               <button
                 type="button"
                 className="btn btn-secondary btn-sm"
                 onClick={() => handleLoadSample('data_science.txt')}
               >
-                Data Science Syllabus
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary btn-sm"
-                onClick={() => handleLoadSample('web_development.txt')}
-              >
-                Web Development Syllabus
+                Data Science
               </button>
               <button
                 type="button"
                 className="btn btn-secondary btn-sm"
                 onClick={() => handleLoadSample('cloud_devops.txt')}
               >
-                Cloud & DevOps Syllabus
+                Cloud & DevOps
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={() => handleLoadSample('web_development.txt')}
+              >
+                Web Development
               </button>
             </div>
           </div>
@@ -222,6 +290,21 @@ export default function NewAnalysis({ setCurrentRunId }) {
           )}
         </div>
 
+        {/* Live Multi-Agent Execution Progress Card */}
+        {loading && (
+          <div className="card" style={{ marginBottom: 20, backgroundColor: '#0f172a', border: '1px solid #6366f1', padding: 20, boxShadow: '0 8px 24px rgba(99, 102, 241, 0.15)', textAlign: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 8 }}>
+              <RefreshCw size={22} className="animate-spin" style={{ color: '#818cf8' }} />
+              <strong style={{ fontSize: '1.05rem', color: 'var(--text-main)' }}>
+                Initializing 6-Agent Sequential Pipeline for {domain}...
+              </strong>
+            </div>
+            <p style={{ fontSize: '0.84rem', color: '#94a3b8', margin: 0 }}>
+              Dispatching syllabus to Curriculum Coordinator. Loading live step-by-step execution monitor...
+            </p>
+          </div>
+        )}
+
         {/* Action Button */}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <button
@@ -233,7 +316,7 @@ export default function NewAnalysis({ setCurrentRunId }) {
             {loading ? (
               <>
                 <RefreshCw size={18} className="animate-spin" />
-                <span>Running Sequential Multi-Agent Pipeline...</span>
+                <span>Launching 6-Agent Pipeline...</span>
               </>
             ) : (
               <>

@@ -27,6 +27,23 @@ import os
 import argparse
 import logging
 from pathlib import Path
+
+# Verify that dependencies in venv are accessible
+try:
+    import semantic_kernel
+except ModuleNotFoundError:
+    print("\n" + "=" * 75)
+    print("ENVIRONMENT NOTICE: 'semantic_kernel' was not found in your current Python environment.")
+    print("=" * 75)
+    print("The pipeline dependencies are installed in the project virtual environment.")
+    print("\nPlease run your command with the virtual environment activated:")
+    print("  source venv/bin/activate")
+    print(f"  python -m backend.cli {' '.join(sys.argv[1:])}")
+    print("\nOr invoke the virtual environment Python directly:")
+    print(f"  ./venv/bin/python -m backend.cli {' '.join(sys.argv[1:])}")
+    print("=" * 75 + "\n")
+    sys.exit(1)
+
 from tabulate import tabulate
 
 from backend.config import settings, PROJECT_ROOT

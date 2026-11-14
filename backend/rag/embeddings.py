@@ -51,11 +51,19 @@ def get_model():
     global _model
 
     if _model is None:
+        import os
         from sentence_transformers import SentenceTransformer
 
         model_name = settings.EMBEDDING_MODEL
         logger.info(f"[Embeddings] Loading model: {model_name}")
-        _model = SentenceTransformer(model_name)
+
+        try:
+            # First attempt loading from local cache for instant offline startup
+            _model = SentenceTransformer(model_name, local_files_only=True)
+        except Exception:
+            # If not yet downloaded, load normally (downloads once and caches)
+            _model = SentenceTransformer(model_name)
+
         logger.info(
             f"[Embeddings] Model loaded: {model_name} "
             f"(dimension={_model.get_embedding_dimension()})"

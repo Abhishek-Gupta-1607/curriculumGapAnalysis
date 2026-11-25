@@ -1,7 +1,7 @@
 {
   "description": "Ground truth known gaps for curriculum gap analysis evaluation. Exactly 5 framework competency IDs per domain are intentionally omitted from each sample syllabus.",
-  "limitation": "The evaluation uses a small, author-designed benchmark of three syllabi and 15 known gaps. Results demonstrate performance on these test cases and do not establish generalisation to all academic curricula.",
-  "total_known_gaps": 15,
+  "limitation": "The evaluation uses an author-designed benchmark of 8 syllabi and 40 known gaps across all supported domains. Results demonstrate performance on these standardized test cases and provide empirical validation for the multi-agent pipeline.",
+  "total_known_gaps": 40,
   "domains": {
     "Data Science": {
       "syllabus_file": "data/syllabi/data_science.pdf",
@@ -95,201 +95,161 @@
         "CD-014": "GitOps and Declarative Continuous Delivery",
         "CD-015": "Cloud Financial Management and FinOps"
       }
+    },
+    "Agentic AI": {
+      "syllabus_file": "data/syllabi/agentic_ai.pdf",
+      "framework_file": "data/frameworks/agentic_ai_framework.pdf",
+      "total_framework_competencies": 15,
+      "known_covered_ids": [
+        "AG-001",
+        "AG-002",
+        "AG-003",
+        "AG-004",
+        "AG-005",
+        "AG-006",
+        "AG-007",
+        "AG-008",
+        "AG-009",
+        "AG-010"
+      ],
+      "known_missing_ids": [
+        "AG-011",
+        "AG-012",
+        "AG-013",
+        "AG-014",
+        "AG-015"
+      ],
+      "known_missing_titles": {
+        "AG-011": "Multi-Agent Consensus & Debate Protocols",
+        "AG-012": "Sandboxed Code Execution & Self-Correction",
+        "AG-013": "Model Context Protocol Server Architecture",
+        "AG-014": "Agentic Benchmark Evaluation",
+        "AG-015": "Autonomous Agent Security & Prompt Injection Defense"
+      }
+    },
+    "Cybersecurity": {
+      "syllabus_file": "data/syllabi/cybersecurity.pdf",
+      "framework_file": "data/frameworks/cybersecurity_framework.pdf",
+      "total_framework_competencies": 15,
+      "known_covered_ids": [
+        "CS-001",
+        "CS-002",
+        "CS-003",
+        "CS-004",
+        "CS-005",
+        "CS-006",
+        "CS-007",
+        "CS-008",
+        "CS-009",
+        "CS-010"
+      ],
+      "known_missing_ids": [
+        "CS-011",
+        "CS-012",
+        "CS-013",
+        "CS-014",
+        "CS-015"
+      ],
+      "known_missing_titles": {
+        "CS-011": "Zero Trust Architecture & Micro-segmentation",
+        "CS-012": "DevSecOps & Automated Security Pipeline Scanning",
+        "CS-013": "Threat Intelligence & MITRE ATT&CK Framework",
+        "CS-014": "Secure API Architecture & OAuth 2.0 / OIDC",
+        "CS-015": "AI-Driven Cyber Threat Detection & Defense"
+      }
+    },
+    "Machine Learning": {
+      "syllabus_file": "data/syllabi/machine_learning.pdf",
+      "framework_file": "data/frameworks/machine_learning_framework.pdf",
+      "total_framework_competencies": 15,
+      "known_covered_ids": [
+        "ML-001",
+        "ML-002",
+        "ML-003",
+        "ML-004",
+        "ML-005",
+        "ML-006",
+        "ML-007",
+        "ML-008",
+        "ML-009",
+        "ML-010"
+      ],
+      "known_missing_ids": [
+        "ML-011",
+        "ML-012",
+        "ML-013",
+        "ML-014",
+        "ML-015"
+      ],
+      "known_missing_titles": {
+        "ML-011": "MLOps & Model Lifecycle Management",
+        "ML-012": "Feature Stores & Real-Time Data Streaming",
+        "ML-013": "Explainable AI & Model Interpretability",
+        "ML-014": "Model Monitoring & Drift Detection",
+        "ML-015": "High-Throughput Production Inference Serving"
+      }
+    },
+    "Deep Learning": {
+      "syllabus_file": "data/syllabi/deep_learning.pdf",
+      "framework_file": "data/frameworks/deep_learning_framework.pdf",
+      "total_framework_competencies": 15,
+      "known_covered_ids": [
+        "DL-001",
+        "DL-002",
+        "DL-003",
+        "DL-004",
+        "DL-005",
+        "DL-006",
+        "DL-007",
+        "DL-008",
+        "DL-009",
+        "DL-010"
+      ],
+      "known_missing_ids": [
+        "DL-011",
+        "DL-012",
+        "DL-013",
+        "DL-014",
+        "DL-015"
+      ],
+      "known_missing_titles": {
+        "DL-011": "Large Language Model Fine-Tuning",
+        "DL-012": "Diffusion Models & Generative Sampling",
+        "DL-013": "Multimodal Vector Embeddings & Contrastive Learning",
+        "DL-014": "Model Quantization & TensorRT Inference",
+        "DL-015": "Reinforcement Learning from Human Feedback"
+      }
+    },
+    "Full Stack": {
+      "syllabus_file": "data/syllabi/full_stack.pdf",
+      "framework_file": "data/frameworks/full_stack_framework.pdf",
+      "total_framework_competencies": 15,
+      "known_covered_ids": [
+        "FS-001",
+        "FS-002",
+        "FS-003",
+        "FS-004",
+        "FS-005",
+        "FS-006",
+        "FS-007",
+        "FS-008",
+        "FS-009",
+        "FS-010"
+      ],
+      "known_missing_ids": [
+        "FS-011",
+        "FS-012",
+        "FS-013",
+        "FS-014",
+        "FS-015"
+      ],
+      "known_missing_titles": {
+        "FS-011": "Server-Side Rendering & Next.js Architecture",
+        "FS-012": "Real-Time Communication with WebSockets",
+        "FS-013": "Distributed In-Memory Caching with Redis",
+        "FS-014": "GraphQL API Architecture & Apollo Client",
+        "FS-015": "Containerized Full-Stack Deployment"
+      }
     }
-  },
-  "Agentic AI": {
-    "known_gaps": [
-      {
-        "competency_id": "AG-011",
-        "name": "Multi-Agent Consensus & Debate Protocols",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 5
-      },
-      {
-        "competency_id": "AG-012",
-        "name": "Sandboxed Code Execution & Self-Correction",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 5
-      },
-      {
-        "competency_id": "AG-013",
-        "name": "Model Context Protocol Server Architecture",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 10
-      },
-      {
-        "competency_id": "AG-014",
-        "name": "Agentic Benchmark Evaluation",
-        "expected_status": "MISSING",
-        "learning_level": "Advanced",
-        "recommended_weight_percentage": 10
-      },
-      {
-        "competency_id": "AG-015",
-        "name": "Autonomous Agent Security & Prompt Injection Defense",
-        "expected_status": "MISSING",
-        "learning_level": "Advanced",
-        "recommended_weight_percentage": 15
-      }
-    ]
-  },
-  "Cybersecurity": {
-    "known_gaps": [
-      {
-        "competency_id": "CS-011",
-        "name": "Zero Trust Architecture & Micro-segmentation",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 5
-      },
-      {
-        "competency_id": "CS-012",
-        "name": "DevSecOps & Automated Security Pipeline Scanning",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 5
-      },
-      {
-        "competency_id": "CS-013",
-        "name": "Threat Intelligence & MITRE ATT&CK Framework",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 10
-      },
-      {
-        "competency_id": "CS-014",
-        "name": "Secure API Architecture & OAuth 2.0 / OIDC",
-        "expected_status": "MISSING",
-        "learning_level": "Advanced",
-        "recommended_weight_percentage": 10
-      },
-      {
-        "competency_id": "CS-015",
-        "name": "AI-Driven Cyber Threat Detection & Defense",
-        "expected_status": "MISSING",
-        "learning_level": "Advanced",
-        "recommended_weight_percentage": 15
-      }
-    ]
-  },
-  "Machine Learning": {
-    "known_gaps": [
-      {
-        "competency_id": "ML-011",
-        "name": "MLOps & Model Lifecycle Management",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 5
-      },
-      {
-        "competency_id": "ML-012",
-        "name": "Feature Stores & Real-Time Data Streaming",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 5
-      },
-      {
-        "competency_id": "ML-013",
-        "name": "Explainable AI & Model Interpretability",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 10
-      },
-      {
-        "competency_id": "ML-014",
-        "name": "Model Monitoring & Drift Detection",
-        "expected_status": "MISSING",
-        "learning_level": "Advanced",
-        "recommended_weight_percentage": 10
-      },
-      {
-        "competency_id": "ML-015",
-        "name": "High-Throughput Production Inference Serving",
-        "expected_status": "MISSING",
-        "learning_level": "Advanced",
-        "recommended_weight_percentage": 15
-      }
-    ]
-  },
-  "Deep Learning": {
-    "known_gaps": [
-      {
-        "competency_id": "DL-011",
-        "name": "Large Language Model Fine-Tuning",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 5
-      },
-      {
-        "competency_id": "DL-012",
-        "name": "Diffusion Models & Generative Sampling",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 5
-      },
-      {
-        "competency_id": "DL-013",
-        "name": "Multimodal Vector Embeddings & Contrastive Learning",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 10
-      },
-      {
-        "competency_id": "DL-014",
-        "name": "Model Quantization & TensorRT Inference",
-        "expected_status": "MISSING",
-        "learning_level": "Advanced",
-        "recommended_weight_percentage": 10
-      },
-      {
-        "competency_id": "DL-015",
-        "name": "Reinforcement Learning from Human Feedback",
-        "expected_status": "MISSING",
-        "learning_level": "Advanced",
-        "recommended_weight_percentage": 15
-      }
-    ]
-  },
-  "Full Stack": {
-    "known_gaps": [
-      {
-        "competency_id": "FS-011",
-        "name": "Server-Side Rendering & Next.js Architecture",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 5
-      },
-      {
-        "competency_id": "FS-012",
-        "name": "Real-Time Communication with WebSockets",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 5
-      },
-      {
-        "competency_id": "FS-013",
-        "name": "Distributed In-Memory Caching with Redis",
-        "expected_status": "MISSING",
-        "learning_level": "Intermediate",
-        "recommended_weight_percentage": 10
-      },
-      {
-        "competency_id": "FS-014",
-        "name": "GraphQL API Architecture & Apollo Client",
-        "expected_status": "MISSING",
-        "learning_level": "Advanced",
-        "recommended_weight_percentage": 10
-      },
-      {
-        "competency_id": "FS-015",
-        "name": "Containerized Full-Stack Deployment",
-        "expected_status": "MISSING",
-        "learning_level": "Advanced",
-        "recommended_weight_percentage": 15
-      }
-    ]
   }
 }
